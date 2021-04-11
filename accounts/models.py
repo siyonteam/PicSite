@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Profile(models.Model):
 
     GENDER = (
@@ -15,3 +16,5 @@ class Profile(models.Model):
     phone_number = models.BigIntegerField(null=True , blank=True)
     bio = models.TextField(null=True , blank=True)
     avtar = models.ImageField(upload_to='avatars', default='avatars/cover.png' , null=True , blank=True)
+
+
