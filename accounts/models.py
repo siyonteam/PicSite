@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+
 
 
 class Profile(models.Model):
@@ -15,6 +17,19 @@ class Profile(models.Model):
     gender = models.CharField(max_length=100 , choices=GENDER , null=True , blank=True)
     phone_number = models.BigIntegerField(null=True , blank=True)
     bio = models.TextField(null=True , blank=True)
-    avtar = models.ImageField(upload_to='avatars', default='avatars/cover.png' , null=True , blank=True)
+    avtar = models.ImageField(upload_to='avatars', default='default/avtar.png')
+
+    def __str__(self) -> str:
+        return self.user.username
+
+
+# post save signale for createing profile when user object create
+def save_profile(sender , instance , created , **kwargs):
+    if created :
+        profile = Profile(user = instance)
+        profile.save()
+
+post_save.connect(save_profile, sender=User)
+
 
 
