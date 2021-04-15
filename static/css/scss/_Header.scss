@@ -1,0 +1,80 @@
+/* header include top pics & informations-news about website*/
+.header {
+    width: 100vw;
+    height: auto;
+    background-color: $blackWeb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    &__tag {
+        width: 20vw;
+        height: 50px;
+        background-color: red;
+        text-align: center;
+        border-radius: 100px;
+        color: white;
+        margin-bottom: 10px;
+        p {
+            margin-top: 10px;
+        }
+    }
+    &__bestMonth {
+        width: 60vw;
+        height: auto;
+        &--image {
+            width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 20px;
+            .showdisc {
+                position: absolute;
+                cursor: pointer;
+                top: 0px;
+                font-size: 30px;
+                margin-top: 10px;
+            }
+            img {
+                object-fit: cover;
+                width: 70%;
+                border-radius: 20px;
+            }
+        }
+        &--disc {
+            object-fit: contain;
+            width: 70%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: rgba(33, 33, 33, 0.9);
+            position: absolute;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            font-size: 13px;
+            top: 0px;
+            z-index: 1;
+            color: white;
+            display: none;
+            .closedisk {
+                cursor: pointer;
+                top: 0px;
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            .likeTopMonth {
+                color: red;
+                font-size: 30px;
+                position: absolute;
+                bottom: 10px;
+                left: 30px;
+                cursor: pointer;
+            }
+        }
+    }
+}

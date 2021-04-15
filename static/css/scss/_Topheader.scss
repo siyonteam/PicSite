@@ -1,0 +1,55 @@
+/*Top header of website include searchbox , logo , userMenu*/
+.topHeader {
+    width: 100vw;
+    height: auto;
+    background-color: $blackWeb;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // position: fixed;
+    /*logo and searchBox*/
+
+    &__left {
+        display: flex;
+        flex: 0.7;
+        justify-content: space-around;
+        align-items: center;
+        img {
+            object-fit: contain;
+            width: 45px;
+        }
+
+        &--searchBox {
+            background-color: white;
+            padding: 7px;
+            padding-right: 15px;
+            border-radius: 20px;
+            display: flex;
+            flex: 0.7;
+            justify-content: space-between;
+            align-items: center;
+            color: gray;
+            input {
+                width: 100%;
+                border: none;
+                outline: none;
+                margin-right: 10px;
+            }
+        }
+    }
+    /*menu*/
+    &__right {
+        ul {
+            margin-top: 10px;
+            list-style: none;
+            li {
+                padding: 5px;
+                display: inline-block;
+                a {
+                    color: whitesmoke;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import "./scss/Vars";
+@import "./scss/Funcs";
+@import "./scss/Topheader";
+@import "./scss/Header";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #e1e1e1;
+    font-family: IRANSans;
+    direction: rtl;
+}
+.fixed {
+    position: sticky;
+    top: 0;
+    height: 70px;
+    z-index: 1;
+}
