@@ -1,6 +1,6 @@
 /*Top header of website include searchbox , logo , userMenu*/
 .topHeader {
-  width: 100vw;
+  width: 100%;
   height: auto;
   background-color: #212121;
   display: -webkit-box;
@@ -79,7 +79,7 @@
 
 /* header include top pics & informations-news about website*/
 .header {
-  width: 100vw;
+  width: 100%;
   height: auto;
   background-color: #212121;
   display: -webkit-box;
@@ -181,6 +181,85 @@
   bottom: 10px;
   left: 30px;
   cursor: pointer;
+}
+
+.main__categories {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+.main__categories--slider {
+  background-color: #f1f1f1;
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+}
+
+.main__categories--slider .item {
+  width: 20vw;
+  height: 20vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: -2;
+  border-radius: 10px;
+  padding: 1px;
+  cursor: pointer;
+}
+
+.main__categories--slider .item__description {
+  position: absolute;
+  background: rgba(33, 33, 33, 0.8);
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.main__categories--slider .item__description p {
+  text-transform: uppercase;
+  color: white;
+  font-size: 2vw;
+}
+
+.main__categories--slider .item:hover .item__description {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.main__categories--slider .item img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 20vw;
+  height: 20vw;
+  position: absolute;
+  top: 0;
+  border-radius: 10px;
+  z-index: -1;
 }
 
 * {

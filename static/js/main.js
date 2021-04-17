@@ -18,9 +18,8 @@ $(document).ready(() => {
     });
 
     $(".owl-carousel").owlCarousel({
-        items: 3,
+        items: 4,
         rtl: true,
-        loop: true,
     });
 });
 
