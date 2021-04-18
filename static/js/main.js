@@ -28,6 +28,8 @@ const bestMonth = document.querySelector(".header__bestMonth");
 const headerTag = document.querySelector(".header__tag");
 const topHeaderLeft = document.querySelector(".topHeader__left");
 const topHeaderRight = document.querySelector(".topHeader__right");
+const category = document.querySelector(".main__categories");
+const pics = document.querySelector(".main__pics");
 const anim = new TimelineMax();
 anim.fromTo(bestMonth, 1, { x: "-100%" }, { x: "0%", ease: Power2.easeInOut })
     .fromTo(
@@ -60,6 +62,20 @@ anim.fromTo(bestMonth, 1, { x: "-100%" }, { x: "0%", ease: Power2.easeInOut })
     )
     .fromTo(
         topHeaderRight,
+        1,
+        { opacity: "0" },
+        { opacity: "1", ease: Power2.easeInOut },
+        "-=1.8"
+    )
+    .fromTo(
+        category,
+        1,
+        { opacity: "0" },
+        { opacity: "1", ease: Power2.easeInOut },
+        "-=1.8"
+    )
+    .fromTo(
+        pics,
         1,
         { opacity: "0" },
         { opacity: "1", ease: Power2.easeInOut },
