@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'friends.apps.FriendsConfig',
+    'wallpaper.apps.WallpaperConfig',
 ]
 
 MIDDLEWARE = [
