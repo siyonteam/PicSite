@@ -1,3 +1,4 @@
+{% load static %}
 <div class="header">
     <div class="header__tag">
         <p>بهترین ماه</p>
@@ -10,7 +11,7 @@
 
             <img
                 id="topMonthImage"
-                src="./assets/images/bestMonth.jpg"
+                src="{% static "assets/images/bestMonth.jpg" %}"
                 alt=""
             />
             <div class="header__bestMonth--disc">
