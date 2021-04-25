@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'friends.apps.FriendsConfig',
     'wallpaper.apps.WallpaperConfig',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import Wallpaper
 
 
 def home(request):
-    return render(request,'base.html',{})
+    images = Wallpaper.objects.all()
+    context = {
+        'images':images,
+    }
+    return render(request,'wallpaper/picture.html',context)

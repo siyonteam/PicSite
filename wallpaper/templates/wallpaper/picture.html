@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+
+{% load static %} 
+{% load thumbnail %}
+
+{% block head %} 
+
+
+<link rel="stylesheet" href="{% static "wallpaper/css/Picture.css" %} " />
+
+{% endblock %} 
+
+{% block picture %}
+<div class="dropdown main__pics--dropdown">
+    <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+    >
+        تازه ترین ها
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">بهترین ها</a>
+        <a class="dropdown-item" href="#">بیشترین بازدید</a>
+        <a class="dropdown-item" href="#">تازه ترین ها</a>
+    </div>
+</div>
+<div class="main__pics--container">
+    {% for item in images %}
+        {% thumbnail item.pic "600x700" crop="center" as im %}
+            <div class="gallery__item">
+                <img src="{{ im.url }}" alt="" />
+            </div>
+        {% endthumbnail %}
+    {% endfor %}
+</div>
+
+{% endblock picture %}
