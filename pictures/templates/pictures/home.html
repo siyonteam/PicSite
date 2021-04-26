@@ -6,11 +6,11 @@
 {% block head %} 
 
 
-<link rel="stylesheet" href="{% static "wallpaper/css/Picture.css" %} " />
+<link rel="stylesheet" href="{% static "pictures/css/Picture.css" %} " />
 
 {% endblock %} 
 
-{% block picture %}
+{% block content %}
 <div class="dropdown main__pics--dropdown">
     <button
         class="btn btn-secondary dropdown-toggle"
@@ -29,13 +29,33 @@
     </div>
 </div>
 <div class="main__pics--container">
-    {% for item in images %}
+    {% for item in pics %}
         {% thumbnail item.pic "600x700" crop="center" as im %}
             <div class="gallery__item">
-                <img src="{{ im.url }}" alt="" />
+                <a href="{{item.get_absolute_url}}">
+                    <img src="{{ im.url }}" alt="" />
+                </a>
             </div>
         {% endthumbnail %}
     {% endfor %}
 </div>
 
-{% endblock picture %}
+<div class="pagination">
+    <span class="step-links">
+        {% if pics.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ pics.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ pics.number }} of {{ pics.paginator.num_pages }}.
+        </span>
+
+        {% if pics.has_next %}
+            <a href="?page={{ pics.next_page_number }}">next</a>
+            <a href="?page={{ pics.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}

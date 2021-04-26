@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+
+{% endblock head %}
+
+
+
+
+{% block content %}
+
+<img src="{{user.profile.avtar.url}}" widht=200 , height = 200><br>
+<h3>{{user.username}}</h3><br>
+<p>followers <span>{{user.followers.count}}</span></p>
+
+<h3>{{pic.title}}</h3>
+<img src="{{pic.pic.url}}" widht=800 , height = 800><br>
+<p>{{pic.description}}</p></br>
+<ul>
+{% for cat in pic.category.all %}
+    <li>{{cat.name}}</li>
+{% endfor %}
+<small>{{pic.updated}}</small>
+</ul>
+
+
+
+
+{% endblock content %}
+
+
