@@ -18,9 +18,15 @@
 <img src="{{pic.pic.url}}" widht=800 , height = 800><br>
 <p>{{pic.description}}</p></br>
 <ul>
-{% for cat in pic.category.all %}
-    <li>{{cat.name}}</li>
+<a href="{% url 'pictures:category' pic.category.slug %}">{{ pic.category }}</a>
+
+<p>tags:</p>
+<ul>
+{% for tag in pic.tags.all %}
+    <li>{{tag}}</li>
 {% endfor %}
+</ul>
+
 <small>{{pic.updated}}</small>
 </ul>
 

@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'friends.apps.FriendsConfig',
     'pictures.apps.PicturesConfig',
     'sorl.thumbnail',
+    'taggit',
 ]
 
 MIDDLEWARE = [

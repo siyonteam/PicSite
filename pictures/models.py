@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 
 
@@ -25,7 +26,8 @@ class Picture(models.Model):
     slug = models.SlugField(max_length=200)
     pic = models.ImageField(upload_to='pictures')
     description = models.TextField()
-    category = models.ManyToManyField(Category , related_name="pics")
+    category = models.ForeignKey(Category ,on_delete=models.CASCADE ,related_name="pics")
+    tags = TaggableManager()
     craeted = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
