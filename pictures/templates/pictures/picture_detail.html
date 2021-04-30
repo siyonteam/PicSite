@@ -31,7 +31,10 @@
 <small>{{pic.updated}}</small>
 </ul>
 
+{% for p in similar_pics  %}
+<a href="{{ p.get_absolute_url}}">{{p.title}}</a>
 
+{% endfor %}
 
 
 {% endblock content %}

@@ -26,10 +26,12 @@ def home(request , category_slug=None):
 def picture_detail(request , pk , slug):
     pic = get_object_or_404(Picture , pk = pk ,slug =slug)
     user = pic.user
+    similar_pics = pic.tags.similar_objects()[:10]
 
     conetxt = {
         "pic": pic,
-        "user": user
+        "user": user,
+        "similar_pics" : similar_pics,
     }
 
     return render(request , 'pictures/picture_detail.html',conetxt)
