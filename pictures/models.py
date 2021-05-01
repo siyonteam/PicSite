@@ -11,6 +11,8 @@ class Category(models.Model):
     up_cat = models.ForeignKey('self' , on_delete=models.CASCADE , null=True , blank=True , related_name='sub_cats')
     is_sub_cat = models.BooleanField(default=False)
     image = models.ImageField(upload_to='categories')
+    craeted = models.DateField(auto_now_add=True)
+    updated = models.DateTimeField( auto_now=True)
 
     class Meta:
         ordering = ('name',)
