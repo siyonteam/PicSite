@@ -1,3 +1,5 @@
+@import "./scss/Vars";
+@import "./scss/Funcs";
 .main__pics {
     width: 100%;
     height: auto;
@@ -19,7 +21,7 @@
             height: auto;
             margin: 0.5rem;
             border-radius: 10px;
-            img {
+            > img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -66,6 +68,8 @@
         grid-template-rows: repeat(3, auto-flow);
 
         .gallery__item {
+            cursor: pointer;
+            position: relative;
             &:first-child,
             &:nth-child(6),
             &:nth-child(8) {
@@ -77,6 +81,126 @@
                 grid-column: span 2;
                 grid-row: span 2;
             }
+            .showDescription {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba($color: #212121, $alpha: 0.8);
+                display: grid;
+                place-items: center;
+                color: whitesmoke;
+                font-size: 5vw;
+                border-radius: 10px;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+            &:hover {
+                .showDescription {
+                    opacity: 1;
+                }
+            }
         }
+    }
+    .gallery_detail {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        z-index: 15;
+        padding: 70px;
+        // opacity: 0;
+        transition: 0.4s;
+        display: none;
+
+        &.detail_show {
+            display: block;
+        }
+        &--closeButton {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+        }
+        &--container {
+            width: 70%;
+            height: 700px;
+            background-color: whitesmoke;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            direction: ltr;
+
+            &-img {
+                width: 100%;
+                height: 70%;
+                object-fit: cover;
+
+                margin-bottom: 10px;
+                padding: 10px 20px;
+                img {
+                    @include dropShadowBlack;
+                    border-radius: 10px;
+                }
+            }
+            &-caption {
+                width: 100%;
+                height: auto;
+                text-align: right;
+                margin-top: 10px;
+                padding: 20px;
+                p {
+                    font-weight: 800;
+                    span {
+                        font-weight: normal;
+                    }
+                }
+            }
+            &-footer {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                background-color: #424242;
+                padding: 10px;
+                .likeButton {
+                    font-size: 30px;
+                    color: #c62828;
+                    cursor: pointer;
+                }
+                .fullDetail {
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@keyframes modalIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes modalOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
