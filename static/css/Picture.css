@@ -133,7 +133,7 @@
     position: absolute;
     top: 20px;
     right: 40px;
-    font-size: 50px;
+    font-size: 3vw;
     color: white;
     cursor: pointer;
   }
@@ -152,10 +152,10 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    overflow: auto;
     padding: 20px 0px;
-    overflow-y: scroll;
-    overflow-x: hidden;
     direction: ltr;
+    cursor: auto;
   }
   .gallery_detail--container-img {
     width: 100%;
@@ -176,6 +176,181 @@
     text-align: right;
     margin-top: 10px;
     padding: 20px;
+  }
+  .gallery_detail--container-caption .authorName {
+    width: 100%;
+    background-color: #1565c0;
+    padding: 7px;
+    border-radius: 7px;
+    color: white;
+    margin-right: 5px;
+  }
+  .gallery_detail--container-caption .likeCount {
+    width: 100%;
+    background-color: #f44336;
+    padding: 5px;
+    border-radius: 7px;
+    color: white;
+    margin-right: 5px;
+  }
+  .gallery_detail--container-caption .postDate {
+    width: 100%;
+    background-color: #4caf50;
+    padding: 5px;
+    border-radius: 7px;
+    color: white;
+    margin-right: 5px;
+  }
+  .gallery_detail--container-caption p {
+    font-weight: 800;
+  }
+  .gallery_detail--container-caption p span {
+    font-weight: normal;
+  }
+  .gallery_detail--container-footer {
+    width: 100%;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-top: 1px solid #424242;
+    padding: 10px;
+  }
+  .gallery_detail--container-footer .likeButton {
+    font-size: 30px;
+    color: #c62828;
+    cursor: pointer;
+  }
+  .gallery_detail--container-footer .fullDetail {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .gallery__item {
+    position: relative;
+    cursor: pointer;
+  }
+  .gallery__item .showDescription {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 33, 33, 0.8);
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    color: whitesmoke;
+    font-size: 5vw;
+    border-radius: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+  }
+  .gallery__item:hover .showDescription {
+    opacity: 1;
+  }
+  .gallery_detail {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding-top: 70px;
+    padding-bottom: 20px;
+    z-index: 15;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    display: none;
+  }
+  .gallery_detail.detail_show {
+    display: block;
+  }
+  .gallery_detail--closeButton {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 5vw;
+    color: white;
+    cursor: pointer;
+    z-index: 20;
+  }
+  .gallery_detail--container {
+    width: 100%;
+    height: 700px;
+    background-color: whitesmoke;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    direction: ltr;
+    position: relative;
+    top: 0;
+    right: 0;
+    cursor: auto;
+  }
+  .gallery_detail--container-img {
+    width: 100%;
+    height: 70%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+  }
+  .gallery_detail--container-img img {
+    width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+    -webkit-box-shadow: 0px 0px 21px -6px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 21px -6px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+  }
+  .gallery_detail--container-caption {
+    width: 100%;
+    height: auto;
+    text-align: right;
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 2vw;
+  }
+  .gallery_detail--container-caption .authorName {
+    width: 100%;
+    background-color: #1565c0;
+    padding: 7px;
+    border-radius: 7px;
+    color: white;
+    margin-right: 5px;
+  }
+  .gallery_detail--container-caption .likeCount {
+    width: 100%;
+    background-color: #f44336;
+    padding: 5px;
+    border-radius: 7px;
+    color: white;
+    margin-right: 5px;
+  }
+  .gallery_detail--container-caption .postDate {
+    width: 100%;
+    background-color: #4caf50;
+    padding: 5px;
+    border-radius: 7px;
+    color: white;
+    margin-right: 5px;
   }
   .gallery_detail--container-caption p {
     font-weight: 800;
@@ -205,6 +380,35 @@
   .gallery_detail--container-footer .fullDetail {
     color: white;
     text-decoration: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery_detail--container-img {
+    width: 100%;
+    height: 70%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+  }
+  .gallery_detail--container-img img {
+    width: 100%;
+    height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -webkit-box-shadow: 0px 0px 21px -6px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 21px -6px rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+  }
+  .gallery_detail--container-caption {
+    font-size: 13px;
+  }
+  .gallery_detail--container-caption p {
+    font-weight: 800;
+  }
+  .gallery_detail--container-caption p span {
+    font-weight: normal;
   }
 }
 

@@ -1,5 +1,14 @@
 @import "./scss/Vars";
 @import "./scss/Funcs";
+
+// .gallery_detail--closeButton {
+//     position: absolute;
+//     top: 20px;
+//     right: 40px;
+//     font-size: 1.5vw;
+//     color: white;
+//     cursor: pointer;
+// }
 .main__pics {
     width: 100%;
     height: auto;
@@ -124,7 +133,7 @@
             position: absolute;
             top: 20px;
             right: 40px;
-            font-size: 50px;
+            font-size: 3vw;
             color: white;
             cursor: pointer;
         }
@@ -136,11 +145,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow: auto;
             padding: 20px 0px;
-            overflow-y: scroll;
-            overflow-x: hidden;
+            // overflow-y: scroll;
+            // overflow-x: hidden;
             direction: ltr;
-
+            cursor: auto;
             &-img {
                 width: 100%;
                 height: 70%;
@@ -159,6 +169,167 @@
                 text-align: right;
                 margin-top: 10px;
                 padding: 20px;
+                .authorName {
+                    width: 100%;
+                    background-color: #1565c0;
+                    padding: 7px;
+                    border-radius: 7px;
+                    color: white;
+                    margin-right: 5px;
+                }
+                .likeCount {
+                    width: 100%;
+                    background-color: #f44336;
+                    padding: 5px;
+                    border-radius: 7px;
+                    color: white;
+                    margin-right: 5px;
+                }
+                .postDate {
+                    width: 100%;
+                    background-color: #4caf50;
+                    padding: 5px;
+                    border-radius: 7px;
+                    color: white;
+                    margin-right: 5px;
+                }
+                p {
+                    font-weight: 800;
+                    span {
+                        font-weight: normal;
+                    }
+                }
+            }
+            &-footer {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                border-top: 1px solid #424242;
+                padding: 10px;
+                .likeButton {
+                    font-size: 30px;
+                    color: #c62828;
+                    cursor: pointer;
+                }
+                .fullDetail {
+                    color: black;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 960px) {
+    .gallery__item {
+        position: relative;
+        cursor: pointer;
+        .showDescription {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba($color: #212121, $alpha: 0.8);
+            display: grid;
+            place-items: center;
+            color: whitesmoke;
+            font-size: 5vw;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        &:hover {
+            .showDescription {
+                opacity: 1;
+            }
+        }
+    }
+    .gallery_detail {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        padding-top: 70px;
+        padding-bottom: 20px;
+        z-index: 15;
+        transition: 0.4s;
+        display: none;
+
+        &.detail_show {
+            display: block;
+        }
+        &--closeButton {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 5vw;
+            color: white;
+            cursor: pointer;
+            z-index: 20;
+        }
+        &--container {
+            width: 100%;
+            height: 700px;
+            background-color: whitesmoke;
+            // margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            direction: ltr;
+            position: relative;
+            top: 0;
+            right: 0;
+            cursor: auto;
+            &-img {
+                width: 100%;
+                height: 70%;
+                object-fit: cover;
+
+                margin-bottom: 10px;
+                padding: 10px 20px;
+                img {
+                    width: 100%;
+                    object-fit: contain;
+                    @include dropShadowBlack;
+                    border-radius: 10px;
+                }
+            }
+            &-caption {
+                width: 100%;
+                height: auto;
+                text-align: right;
+                margin-top: 10px;
+                padding: 20px;
+                font-size: 2vw;
+                .authorName {
+                    width: 100%;
+                    background-color: #1565c0;
+                    padding: 7px;
+                    border-radius: 7px;
+                    color: white;
+                    margin-right: 5px;
+                }
+                .likeCount {
+                    width: 100%;
+                    background-color: #f44336;
+                    padding: 5px;
+                    border-radius: 7px;
+                    color: white;
+                    margin-right: 5px;
+                }
+                .postDate {
+                    width: 100%;
+                    background-color: #4caf50;
+                    padding: 5px;
+                    border-radius: 7px;
+                    color: white;
+                    margin-right: 5px;
+                }
                 p {
                     font-weight: 800;
                     span {
@@ -187,7 +358,36 @@
         }
     }
 }
+@media (max-width: 640px) {
+    .gallery_detail {
+        &--container {
+            &-img {
+                width: 100%;
+                height: 70%;
+                object-fit: cover;
 
+                margin-bottom: 10px;
+                padding: 10px 20px;
+                img {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    @include dropShadowBlack;
+                    border-radius: 10px;
+                }
+            }
+            &-caption {
+                font-size: 13px;
+                p {
+                    font-weight: 800;
+                    span {
+                        font-weight: normal;
+                    }
+                }
+            }
+        }
+    }
+}
 @keyframes modalIn {
     0% {
         opacity: 0;
