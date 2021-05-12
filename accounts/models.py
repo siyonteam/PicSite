@@ -17,7 +17,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=100 , choices=GENDER , null=True , blank=True)
     phone_number = models.BigIntegerField(null=True , blank=True)
     bio = models.TextField(null=True , blank=True)
-    avtar = models.ImageField(upload_to='avatars', default='default/avtar.png')
+    avtar = models.ImageField(upload_to='avtars', default='default/avtar.png')
 
     def __str__(self) -> str:
         return self.user.username
