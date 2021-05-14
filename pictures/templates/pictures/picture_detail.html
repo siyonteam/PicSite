@@ -1,42 +1,75 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 
 {% block head %}
 
-
 {% endblock head %}
 
+{% block detail %}
 
+    <div class="gallery_detail--closeButton">
+        <i class="fas fa-times-circle"></i>
+    </div>
 
+    <div class="gallery_detail--container">
+        <div class="gallery_detail--container-header">
+            <div class="likeButton">
+                <i class="fas fa-heart"></i>
+            </div>
+            <a href="#" class="fullDetail">
+                <p>دیدن جزئیات بیشتر</p>
+            </a>
+        </div>
+        <div class="gallery_detail--container-img">
+            <img
+                src="./static/assets/images/1.jpg"
+                alt=""
+            />
+        </div>
+        <div class="gallery_detail--container-caption">
+            <p>
+                نویسنده :
+                <span class="authorName"
+                    >سیامک علیپور فرد</span
+                >
+            </p>
 
-{% block content %}
+            <p>
+                تعداد پسندیدن ها :
+                <span class="likeCount">15481</span>
+            </p>
+            <p>
+                تاریخ پست :
+                <span class="postDate">1398.05.21</span>
+            </p>
 
-<img src="{{user.profile.avtar.url}}" widht=200 , height = 200><br>
-<h3>{{user.username}}</h3><br>
-<p>followers <span>{{user.followers.count}}</span></p>
+            <p>
+                توضیحات :
+                <span class="imageDescription"
+                    >لورم ایپسوم متن ساختگی با تولید
+                    سادگی نامفهوم از صنعت چاپ و با
+                    استفاده از طراحان گرافیک است.
+                    چاپگرها و متون بلکه روزنامه و مجله
+                    در ستون و سطرآنچنان که لازم است و
+                    برای شرایط فعلی تکنولوژی مورد نیاز و
+                    کاربردهای متنوع با هدف بهبود
+                    ابزارهای کاربردی می باشد. کتابهای
+                    زیادی در شصت و سه درصد گذشته، حال و
+                    آینده شناخت فراوان جامعه و متخصصان
+                    را می طلبد تا با نرم افزارها شناخت
+                    بیشتری را برای طراحان رایانه ای علی
+                    الخصوص طراحان خلاقی و فرهنگ پیشرو در
+                    زبان فارسی ایجاد کرد. در این صورت می
+                    توان امید داشت که تمام و دشواری
+                    موجود در ارائه راهکارها و شرایط سخت
+                    تایپ به پایان رسد وزمان مورد نیاز
+                    شامل حروفچینی دستاوردهای اصلی و
+                    جوابگوی سوالات پیوسته اهل دنیای
+                    موجود طراحی اساسا مورد استفاده قرار
+                    گیرد.</span
+                >
+            </p>
+        </div>
+    </div>
+</div>
 
-<h3>{{pic.title}}</h3>
-<img src="{{pic.pic.url}}" widht=800 , height = 800><br>
-<p>{{pic.description}}</p></br>
-<ul>
-<a href="{% url 'pictures:category' pic.category.slug %}">{{ pic.category }}</a>
-
-<p>tags:</p>
-<ul>
-{% for tag in pic.tags.all %}
-    <li>{{tag}}</li>
-{% endfor %}
-</ul>
-<br>
-<p>likes : {{pic.likes.all.count}}</p>
-<small>{{pic.updated}}</small>
-</ul>
-
-{% for p in similar_pics  %}
-<a href="{{ p.get_absolute_url}}">{{p.title}}</a>
-
-{% endfor %}
-
-
-{% endblock content %}
-
-
+{% endblock detail %}

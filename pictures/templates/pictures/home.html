@@ -32,6 +32,12 @@
     {% for item in pics %}
         {% thumbnail item.pic "800x800"  as im %}
             <div class="gallery__item">
+                <div class="showDescription">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+                <div class="gallery_detail">
+                    {% block detail %}{% endblock detail %}
+                </div>
                 <a href="{{item.get_absolute_url}}">
                     <img src="{{ im.url }}" alt="" />
                 </a>
@@ -57,5 +63,10 @@
         {% endif %}
     </span>
 </div>
+
+{% block script %} 
+<script src="{% static "pictures/js/details.js" %}"></script>
+{% endblock %}
+
 
 {% endblock content %}
