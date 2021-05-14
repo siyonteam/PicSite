@@ -207,7 +207,7 @@
   .gallery_detail--container-caption p span {
     font-weight: normal;
   }
-  .gallery_detail--container-footer {
+  .gallery_detail--container-header {
     width: 100%;
     height: auto;
     display: -webkit-box;
@@ -218,15 +218,14 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    border-top: 1px solid #424242;
     padding: 10px;
   }
-  .gallery_detail--container-footer .likeButton {
+  .gallery_detail--container-header .likeButton {
     font-size: 30px;
     color: #c62828;
     cursor: pointer;
   }
-  .gallery_detail--container-footer .fullDetail {
+  .gallery_detail--container-header .fullDetail {
     color: black;
     text-decoration: none;
   }
@@ -358,7 +357,7 @@
   .gallery_detail--container-caption p span {
     font-weight: normal;
   }
-  .gallery_detail--container-footer {
+  .gallery_detail--container-header {
     width: 100%;
     height: auto;
     display: -webkit-box;
@@ -369,16 +368,15 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    background-color: #424242;
     padding: 10px;
   }
-  .gallery_detail--container-footer .likeButton {
+  .gallery_detail--container-header .likeButton {
     font-size: 30px;
     color: #c62828;
     cursor: pointer;
   }
-  .gallery_detail--container-footer .fullDetail {
-    color: white;
+  .gallery_detail--container-header .fullDetail {
+    color: black;
     text-decoration: none;
   }
 }

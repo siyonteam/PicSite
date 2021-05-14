@@ -200,13 +200,13 @@
                     }
                 }
             }
-            &-footer {
+            &-header {
                 width: 100%;
                 height: auto;
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
-                border-top: 1px solid #424242;
+
                 padding: 10px;
                 .likeButton {
                     font-size: 30px;
@@ -337,13 +337,12 @@
                     }
                 }
             }
-            &-footer {
+            &-header {
                 width: 100%;
                 height: auto;
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
-                background-color: #424242;
                 padding: 10px;
                 .likeButton {
                     font-size: 30px;
@@ -351,7 +350,7 @@
                     cursor: pointer;
                 }
                 .fullDetail {
-                    color: white;
+                    color: black;
                     text-decoration: none;
                 }
             }
