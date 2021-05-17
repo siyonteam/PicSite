@@ -36,7 +36,7 @@
                     <i class="fas fa-search-plus"></i>
                 </div>
                 <div class="gallery_detail">
-                    {% block detail %}{% endblock detail %}
+                    {% include 'pictures/picture_detail.html' %}
                 </div>
                 <a href="{{item.get_absolute_url}}">
                     <img src="{{ im.url }}" alt="" />
