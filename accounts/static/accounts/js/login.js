@@ -7,13 +7,13 @@ const classClean = () => {
     regBox.classList.remove("exit");
 };
 logBox.addEventListener("click", (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     classClean();
     logBox.classList.add("enter");
     regBox.classList.add("exit");
 });
 regBox.addEventListener("click", (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     classClean();
     regBox.classList.add("enter");
     logBox.classList.add("exit");
