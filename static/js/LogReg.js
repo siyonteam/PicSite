@@ -1,20 +1,30 @@
-let regBox = document.querySelector(".registerBox");
-let logBox = document.querySelector(".loginBox");
+const regBox = document.querySelector(".registerBox");
+const logBox = document.querySelector(".loginBox");
+let regBut = document.querySelector(".regButton");
+let logBut = document.querySelector(".logButton");
+const logBoxEnter = () => {
+    classClean();
+    logBox.classList.add("enter");
+    regBox.classList.add("exit");
+};
+const regBoxEnter = () => {
+    classClean();
+    regBox.classList.add("enter");
+    logBox.classList.add("exit");
+};
 const classClean = () => {
     logBox.classList.remove("enter");
     logBox.classList.remove("exit");
     regBox.classList.remove("enter");
     regBox.classList.remove("exit");
 };
-logBox.addEventListener("click", (e) => {
-    e.preventDefault();
-    classClean();
-    logBox.classList.add("enter");
-    regBox.classList.add("exit");
+
+logBut.addEventListener("click", (e) => {
+    // e.preventDefault();
+    logBoxEnter();
 });
-regBox.addEventListener("click", (e) => {
-    e.preventDefault();
-    classClean();
-    regBox.classList.add("enter");
-    logBox.classList.add("exit");
+
+regBut.addEventListener("click", (e) => {
+    // e.preventDefault();
+    regBoxEnter();
 });

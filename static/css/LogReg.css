@@ -32,8 +32,8 @@ main {
 }
 
 main .loginBox {
-  width: 25%;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   background-color: #f1f1f1;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,8 +52,8 @@ main .loginBox {
   -webkit-box-shadow: 0px 0px 24px -5px rgba(255, 255, 255, 0.2);
           box-shadow: 0px 0px 24px -5px rgba(255, 255, 255, 0.2);
   position: absolute;
-  -webkit-transform: translateX(-25%);
-          transform: translateX(-25%);
+  -webkit-transform: translateX(-25%) scale(0.9);
+          transform: translateX(-25%) scale(0.9);
   opacity: 0.5;
   z-index: 0;
   -webkit-transition: 0.4s;
@@ -64,8 +64,8 @@ main .loginBox {
 main .loginBox.enter {
   -webkit-animation: logBoxEnter 1.5s;
           animation: logBoxEnter 1.5s;
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translateX(0%) scale(1);
+          transform: translateX(0%) scale(1);
   opacity: 1;
   z-index: 2;
   cursor: auto;
@@ -74,8 +74,8 @@ main .loginBox.enter {
 main .loginBox.exit {
   -webkit-animation: logBoxExit 1.5s;
           animation: logBoxExit 1.5s;
-  -webkit-transform: translateX(-25%);
-          transform: translateX(-25%);
+  -webkit-transform: translateX(-25%) scale(0.9);
+          transform: translateX(-25%) scale(0.9);
   opacity: 0.5;
   z-index: 0;
   cursor: pointer;
@@ -97,14 +97,40 @@ main .loginBox form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
 main .loginBox form input {
+  width: 60%;
   outline: none;
+  line-height: 30px;
   border: 1px solid #b9b9b9;
   padding: 6px;
   border-radius: 3px;
-  line-height: 30px;
+  margin-top: 20px;
+}
+
+main .loginBox form button {
+  margin-top: 10px;
+}
+
+main .loginBox__footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .loginBox__footer p {
+  cursor: pointer;
 }
 
 main .registerBox {
@@ -184,74 +210,93 @@ main .registerBox form button {
   margin-top: 20px;
 }
 
+main .registerBox__footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .registerBox__footer p {
+  cursor: pointer;
+}
+
 @-webkit-keyframes logBoxEnter {
   0% {
-    -webkit-transform: translateX(-25%);
-            transform: translateX(-25%);
+    -webkit-transform: translateX(-25%) scale(0.9);
+            transform: translateX(-25%) scale(0.9);
     opacity: 0.5;
   }
   50% {
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -webkit-transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) scale(0.95);
     opacity: 0.8;
   }
   100% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    -webkit-transform: translateX(0%) scale(1);
+            transform: translateX(0%) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes logBoxEnter {
   0% {
-    -webkit-transform: translateX(-25%);
-            transform: translateX(-25%);
+    -webkit-transform: translateX(-25%) scale(0.9);
+            transform: translateX(-25%) scale(0.9);
     opacity: 0.5;
   }
   50% {
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -webkit-transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) scale(0.95);
     opacity: 0.8;
   }
   100% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    -webkit-transform: translateX(0%) scale(1);
+            transform: translateX(0%) scale(1);
     opacity: 1;
   }
 }
 
 @-webkit-keyframes logBoxExit {
   0% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    -webkit-transform: translateX(0%) scale(1);
+            transform: translateX(0%) scale(1);
     opacity: 1;
   }
   50% {
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -webkit-transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) scale(0.95);
     opacity: 0.8;
   }
   100% {
-    -webkit-transform: translateX(-25%);
-            transform: translateX(-25%);
+    -webkit-transform: translateX(-25%) scale(0.9);
+            transform: translateX(-25%) scale(0.9);
     opacity: 0.5;
   }
 }
 
 @keyframes logBoxExit {
   0% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    -webkit-transform: translateX(0%) scale(1);
+            transform: translateX(0%) scale(1);
     opacity: 1;
   }
   50% {
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    -webkit-transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) scale(0.95);
     opacity: 0.8;
   }
   100% {
-    -webkit-transform: translateX(-25%);
-            transform: translateX(-25%);
+    -webkit-transform: translateX(-25%) scale(0.9);
+            transform: translateX(-25%) scale(0.9);
     opacity: 0.5;
   }
 }

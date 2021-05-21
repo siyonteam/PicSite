@@ -17,8 +17,8 @@ main {
     align-items: center;
     height: 100vh;
     .loginBox {
-        width: 25%;
-        height: 400px;
+        width: 500px;
+        height: 500px;
         background-color: $whitWeb;
         display: flex;
         flex-direction: column;
@@ -27,24 +27,22 @@ main {
         border-radius: 5px;
         box-shadow: 0px 0px 24px -5px rgba(255, 255, 255, 0.2);
         position: absolute;
-        transform: translateX(-25%);
+        transform: translateX(-25%) scale(0.9);
         opacity: 0.5;
         z-index: 0;
         transition: 0.4s;
-
         cursor: pointer;
 
         &.enter {
             animation: logBoxEnter 1.5s;
-            transform: translateX(0%);
+            transform: translateX(0%) scale(1);
             opacity: 1;
             z-index: 2;
             cursor: auto;
         }
         &.exit {
             animation: logBoxExit 1.5s;
-            transform: translateX(-25%);
-
+            transform: translateX(-25%) scale(0.9);
             opacity: 0.5;
             z-index: 0;
             cursor: pointer;
@@ -55,12 +53,29 @@ main {
             flex: 0.5;
             justify-content: space-around;
             align-items: center;
+            width: 100%;
             input {
+                width: 60%;
                 outline: none;
+                line-height: 30px;
                 border: 1px solid rgb(185, 185, 185);
                 padding: 6px;
                 border-radius: 3px;
-                line-height: 30px;
+                margin-top: 20px;
+            }
+            button {
+                margin-top: 10px;
+            }
+        }
+        &__footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            p {
+                cursor: pointer;
             }
         }
     }
@@ -77,6 +92,7 @@ main {
         position: absolute;
         z-index: 1;
         transition: 0.4s;
+
         &.exit {
             animation: regBoxExit 1.5s forwards;
             transform: translateX(25%) scale(0.9);
@@ -109,37 +125,48 @@ main {
                 margin-top: 20px;
             }
         }
+        &__footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            p {
+                cursor: pointer;
+            }
+        }
     }
 }
 @keyframes logBoxEnter {
     0% {
-        transform: translateX(-25%);
+        transform: translateX(-25%) scale(0.9);
         opacity: 0.5;
     }
 
     50% {
-        transform: translateX(-50%);
+        transform: translateX(-50%) scale(0.95);
         opacity: 0.8;
     }
 
     100% {
-        transform: translateX(0%);
+        transform: translateX(0%) scale(1);
         opacity: 1;
     }
 }
 @keyframes logBoxExit {
     0% {
-        transform: translateX(0%);
+        transform: translateX(0%) scale(1);
         opacity: 1;
     }
 
     50% {
-        transform: translateX(-50%);
+        transform: translateX(-50%) scale(0.95);
         opacity: 0.8;
     }
 
     100% {
-        transform: translateX(-25%);
+        transform: translateX(-25%) scale(0.9);
         opacity: 0.5;
     }
 }
