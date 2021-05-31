@@ -1,5 +1,5 @@
 from django.core import paginator
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render , get_object_or_404
 from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
 from django.contrib.auth.models import User
@@ -41,17 +41,21 @@ def home(request , category_slug=None):
 
 
 def picture_detail(request , pk):
-    pic = get_object_or_404(Picture , pk = pk)
-    user = pic.user
-    similar_pics = pic.tags.similar_objects()[:10]
+    if request.is_ajax():
+        try :
+            pic = get_object_or_404(Picture , pk = pk)
+        except :
+            return HttpResponse("")
+        user = pic.user
+        similar_pics = pic.tags.similar_objects()[:10]
 
-    conetxt = {
-        "pic": pic,
-        "user": user,
-        "similar_pics" : similar_pics,
-    }
+        conetxt = {
+            "pic": pic,
+            "user": user,
+            "similar_pics" : similar_pics,
+        }
 
-    return render(request , 'pictures/picture_detail.html',conetxt)
+        return render(request , 'pictures/picture_detail.html',conetxt)
 
 
 @login_required

@@ -8,19 +8,27 @@ container.addEventListener("click", (e) => {
     if (!modalToggle) return;
 
     const modal = modalToggle.nextElementSibling;
-    const closeButton = modal.querySelector(".gallery_detail--closeButton");
-    const openModal = (_) => {
-        modal.classList.add("detail_show");
-        modal.style.animation = "modalIn 500ms forwards";
-    };
-    const closeModal = (_) => {
-        modal.classList.remove("detail_show");
-        modal.removeEventListener("animationend", closeModal);
-    };
-    closeButton.addEventListener("click", () => {
-        modal.style.animation = "modalOut 500ms forwards    ";
-        modal.addEventListener("animationend", closeModal);
-    });
+    var picid = modal.getAttribute('data-picid');
+    $.get('/pictures/'+picid , function(data) {
+        modal.innerHTML = data
+        const closeButton = modal.querySelector(".gallery_detail--closeButton");
+        
+        const openModal = (_) => {
+            
+            modal.classList.add("detail_show");
+            modal.style.animation = "modalIn 500ms forwards";
+        };
+        const closeModal = (_) => {
+            modal.classList.remove("detail_show");
+            modal.removeEventListener("animationend", closeModal);
+            modal.innerHTML = "";
+        };
+        closeButton.addEventListener("click", () => {
+            modal.style.animation = "modalOut 500ms forwards    ";
+            modal.addEventListener("animationend", closeModal);
+        });
 
-    openModal();
-});
+        openModal(); 
+        console.log("ok")
+    });
+})

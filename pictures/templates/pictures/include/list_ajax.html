@@ -6,12 +6,12 @@
                 <div class="showDescription">
                     <i class="fas fa-search-plus"></i>
                 </div>
-                <div class="gallery_detail">
-                    {% include 'pictures/picture_detail.html' %}
+                <div class="gallery_detail" data-picid = "{{item.id}}">
+                    
                 </div>
-                <a href="{{item.get_absolute_url}}">
-                    <img src="{{ im.url }}" alt="" />
-                </a>
+                
+                <img src="{{ im.url }}" alt="" />
+                
             </div>
         {% endthumbnail %}
 {% endfor %}
