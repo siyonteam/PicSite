@@ -1,12 +1,12 @@
 {% extends 'base.html' %} 
 
 {% load static %} 
-{% load thumbnail %}
 
 {% block head %} 
 
 
 <link rel="stylesheet" href="{% static 'pictures/css/Picture.css'    %} " />
+
 
 {% endblock %} 
 
@@ -28,45 +28,16 @@
         <a class="dropdown-item" href="#">تازه ترین ها</a>
     </div>
 </div>
-<div class="main__pics--container">
-    {% for item in pics %}
-        {% thumbnail item.pic "800x800"  as im %}
-            <div class="gallery__item">
-                <div class="showDescription">
-                    <i class="fas fa-search-plus"></i>
-                </div>
-                <div class="gallery_detail">
-                    {% include 'pictures/picture_detail.html' %}
-                </div>
-                <a href="{{item.get_absolute_url}}">
-                    <img src="{{ im.url }}" alt="" />
-                </a>
-            </div>
-        {% endthumbnail %}
-    {% endfor %}
-</div>
-
-<div class="pagination">
-    <span class="step-links">
-        {% if pics.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ pics.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ pics.number }} of {{ pics.paginator.num_pages }}.
-        </span>
-
-        {% if pics.has_next %}
-            <a href="?page={{ pics.next_page_number }}">next</a>
-            <a href="?page={{ pics.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
+<div class="main__pics--container" id="image-list">
+    {% include 'pictures/include/list_ajax.html' %}
 </div>
 
 {% block script %} 
 <script src="{% static "pictures/js/details.js" %}"></script>
-{% endblock %}
+<script src="{% static "pictures/js/list_ajax.js" %}"></script>
+{% endblock script %}
+
+
 
 
 {% endblock content %}

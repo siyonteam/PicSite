@@ -1,4 +1,5 @@
 from django.core import paginator
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render , get_object_or_404
 from django.core.paginator import Paginator , EmptyPage , PageNotAnInteger
 from django.contrib.auth.models import User
@@ -17,14 +18,25 @@ def home(request , category_slug=None):
         category = get_object_or_404(Category , slug=category_slug)
         all_pics = all_pics.filter(category = category)
 
-    paginator = Paginator(all_pics , 20)
+    paginator = Paginator(all_pics , 19)
     page = request.GET.get("page")
 
-    pics = paginator.get_page(page) 
-
+    try :
+        pics = paginator.page(page)
+    except PageNotAnInteger:
+        pics = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax() : 
+            return HttpResponse('')
+        pics = paginator.page(paginator.num_pages)
+  
     context = {
         'pics':pics,
     }
+
+    if request.is_ajax() :
+        return render(request , 'pictures/include/list_ajax.html' , context)
+
     return render(request,'pictures/home.html',context)
 
 
