@@ -48,7 +48,7 @@ def user_register(request):
     else :
         form = UserRegistrationForm()
 
-    return render(request , 'accounts/login.html' , {"form":form})
+    return render(request , 'accounts/register.html' , {"form":form})
 
 @login_required
 def user_change_password(request):

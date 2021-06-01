@@ -43,13 +43,6 @@ main .loginBox {
     -webkit-box-shadow: 0px 0px 24px -5px rgba(255, 255, 255, 0.2);
     box-shadow: 0px 0px 24px -5px rgba(255, 255, 255, 0.2);
     position: absolute;
-    -webkit-transform: translateX(-25%);
-    transform: translateX(-25%);
-    opacity: 0.5;
-    z-index: 0;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    cursor: pointer;
 }
 
 main .loginBox.enter {
@@ -175,7 +168,7 @@ main .registerBox form button {
     margin-top: 20px;
 }
 
-@-webkit-keyframes logBoxEnter {
+/* @-webkit-keyframes logBoxEnter {
     0% {
         -webkit-transform: translateX(-25%);
         transform: translateX(-25%);
@@ -317,5 +310,5 @@ main .registerBox form button {
         transform: translateX(0%) scale(1);
         opacity: 1;
     }
-}
+} */
 /*# sourceMappingURL=LogReg.css.map */
