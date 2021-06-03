@@ -280,6 +280,8 @@
   height: 200px;
   background-color: #212121;
   position: relative;
+  bottom: 0px;
+  right: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
