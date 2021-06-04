@@ -27,8 +27,6 @@ container.addEventListener("click", (e) => {
             modal.style.animation = "modalOut 500ms forwards    ";
             modal.addEventListener("animationend", closeModal);
         });
-
         openModal(); 
-        console.log("ok")
     });
 })
