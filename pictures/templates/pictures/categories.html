@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'pictures/css/Categories.css' %}">
+{% endblock head %}
+
+
+
+{% block category %}
+
+<section id="categories">
+    <p class="categories__headText">Categories</p>
+    <div class="categories">
+        <div class="categories__item">
+            <a
+                class="photo"
+                href="#"
+                style="
+                    background-image: url({% static 'pictures/assets/images/1.jpg' %});
+                "
+            >
+                <div class="photo__description">Romantic</div>
+            </a>
+        </div>
+        <div class="categories__item">
+            <a
+                class="photo"
+                href="#"
+                style="
+                    background-image: url({% static 'pictures/assets/images/2.jpg' %});
+                "
+            >
+                <div class="photo__description">Chair</div>
+            </a>
+        </div>
+        <div class="categories__item">
+            <a
+                class="photo"
+                href="#"
+                style="
+                    background-image: url({% static 'pictures/assets/images/3.jpg' %});
+                "
+            >
+                <div class="photo__description">Churchs</div>
+            </a>
+        </div>
+        <div class="categories__item">
+            <a
+                class="photo"
+                href="#"
+                style="
+                    background-image: url({% static 'pictures/assets/images/4.jpg' %});
+                "
+            >
+                <div class="photo__description">wallpapers</div>
+            </a>
+        </div>
+        
+    </div>
+</section>
+{% endblock category %}
+
+
