@@ -14,8 +14,7 @@ function like(elmnt){
     });
     $.post('/pictures/like/',
         {
-            action : elmnt.dataset.action,
-            id : elmnt.dataset.id
+            id : elmnt.dataset.id,
         },
         function(data){
             if (data == "liked") {

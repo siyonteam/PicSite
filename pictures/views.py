@@ -50,10 +50,12 @@ def picture_detail(request , pk):
             return HttpResponse("")
         user = pic.user
         similar_pics = pic.tags.similar_objects()[:10]
-        liked = Like.objects.filter(user = request.user , pic = pic)
         is_liked = False
-        if liked.exists():
-            is_liked = True
+        if request.user.is_authenticated:
+            liked = Like.objects.filter(user = request.user , pic = pic)
+
+            if liked.exists():
+                is_liked = True
         conetxt = {
             "pic": pic,
             "user": user,
@@ -102,20 +104,21 @@ def edit_picture(request, pk):
     else:
         raise Http404("access denied")
 
-@require_POST
 @login_required
+@require_POST
 def like(request):
     if request.is_ajax():
-        action = request.POST.get('action')
         picid = request.POST.get('id')
         pic = get_object_or_404(Picture , id=picid)
         user = request.user
+        like =Like.objects.filter(pic=pic , user=user)
 
-        if action == "like":
-            like = Like(user = user , pic=pic)
-            like.save()
-            return HttpResponse('liked')
-        else :
-            like = get_object_or_404(Like , user = user , pic=pic)
+        if like.exists():
+            like = Like.objects.get(pic=pic , user=user)
             like.delete()
-            return HttpResponse('unliked')
+            return HttpResponse("unliked")
+        else :
+            like = Like(pic=pic , user=user)
+            like.save()
+            return HttpResponse("liked")
+        

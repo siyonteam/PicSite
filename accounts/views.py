@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404 , render , redirect
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.contrib.auth import authenticate, login , update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .models import Profile
@@ -31,9 +32,10 @@ def login_user(request):
             if user is not None :
                 login(request , user)
                 return redirect("accounts:profile" , user.username)
-    else:
-        form = LoginForm()
-
+            else:
+                messages.error(request, 'incorrect username/password')
+   
+    form = LoginForm()
     return render(request , "accounts/login.html",{"form":form})
         
     
