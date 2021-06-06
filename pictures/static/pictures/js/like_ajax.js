@@ -21,6 +21,11 @@ function like(elmnt){
                 elmnt.style.color = "red";
             } else if(data == "unliked") {
                 elmnt.style.color = "black";
+            }else {
+                if (window.confirm('you must login for like , clik ok to login ')) 
+                {
+                    window.location.href=data;
+                };
             }
         }
     ); 

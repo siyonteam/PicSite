@@ -104,21 +104,25 @@ def edit_picture(request, pk):
     else:
         raise Http404("access denied")
 
-@login_required
+
 @require_POST
 def like(request):
     if request.is_ajax():
-        picid = request.POST.get('id')
-        pic = get_object_or_404(Picture , id=picid)
-        user = request.user
-        like =Like.objects.filter(pic=pic , user=user)
+        if request.user.is_authenticated:
+            picid = request.POST.get('id')
+            pic = get_object_or_404(Picture , id=picid)
+            user = request.user
+            like =Like.objects.filter(pic=pic , user=user)
 
-        if like.exists():
-            like = Like.objects.get(pic=pic , user=user)
-            like.delete()
-            return HttpResponse("unliked")
-        else :
-            like = Like(pic=pic , user=user)
-            like.save()
-            return HttpResponse("liked")
+            if like.exists():
+                like = Like.objects.get(pic=pic , user=user)
+                like.delete()
+                return HttpResponse("unliked")
+            else :
+                like = Like(pic=pic , user=user)
+                like.save()
+                return HttpResponse("liked")
+        else:
+            login_url = request.build_absolute_uri('/accounts/login/')
+            return HttpResponse(login_url)
         
