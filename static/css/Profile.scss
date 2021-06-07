@@ -1,5 +1,5 @@
 @import "./scss/Vars";
-
+@import "./scss/Funcs";
 .profile {
     width: 100%;
     height: auto;
@@ -37,8 +37,7 @@
         width: 100%;
         height: auto;
         display: flex;
-        align-items: center;
-        justify-content: center;
+
         background-color: $whitWeb;
         padding-right: 100px;
         &--right {
@@ -154,8 +153,64 @@
 
         &--left {
             width: 70%;
-            height: 300px;
-            // background-color: red;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            .left__header {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &--follow {
+                    background-color: #5c7cfa;
+                    padding: 7px 10px;
+                    color: white;
+                    cursor: pointer;
+                    margin-right: 20px;
+                }
+                &--category {
+                    padding-left: 50px;
+                    ul {
+                        padding: 10px;
+                        list-style: none;
+                        li {
+                            &:nth-child(2) {
+                                color: #424242;
+                                font-weight: bold;
+                            }
+                            display: inline-block;
+                            margin-left: 30px;
+                            cursor: pointer;
+                            color: #757575;
+                        }
+                    }
+                }
+            }
+            .left__main {
+                &--photos {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                    .photos__item {
+                        background-position: center center !important;
+                        background-repeat: no-repeat !important;
+                        background-size: cover !important;
+                        display: block;
+                        width: 200px;
+                        height: 150px;
+                        margin: 50px;
+                        border-radius: 5px;
+
+                        -webkit-box-shadow: 0px 0px 26px -13px #000000;
+                        box-shadow: 0px 0px 26px -13px #000000;
+                    }
+                }
+            }
         }
     }
     // &__seperator {

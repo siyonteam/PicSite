@@ -49,12 +49,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   background-color: #f1f1f1;
   padding-right: 100px;
 }
@@ -229,6 +223,88 @@
 
 .profile__main--left {
   width: 70%;
-  height: 300px;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+}
+
+.profile__main--left .left__header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__main--left .left__header--follow {
+  background-color: #5c7cfa;
+  padding: 7px 10px;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.profile__main--left .left__header--category {
+  padding-left: 50px;
+}
+
+.profile__main--left .left__header--category ul {
+  padding: 10px;
+  list-style: none;
+}
+
+.profile__main--left .left__header--category ul li {
+  display: inline-block;
+  margin-left: 30px;
+  cursor: pointer;
+  color: #757575;
+}
+
+.profile__main--left .left__header--category ul li:nth-child(2) {
+  color: #424242;
+  font-weight: bold;
+}
+
+.profile__main--left .left__main--photos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.profile__main--left .left__main--photos .photos__item {
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  display: block;
+  width: 200px;
+  height: 150px;
+  margin: 50px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 26px -13px #000000;
+  box-shadow: 0px 0px 26px -13px #000000;
 }
 /*# sourceMappingURL=Profile.css.map */
