@@ -43,6 +43,19 @@
   box-shadow: 0px 0px 35px -12px rgba(0, 0, 0, 0.55);
 }
 
+.main__pics--container .gallery__item .likeButton {
+  color: #212121;
+}
+
+.main__pics--container .gallery__item .heartBeat {
+  -webkit-animation: heartbeat 2s forwards;
+          animation: heartbeat 2s forwards;
+}
+
+.main__pics--container .gallery__item .clicked {
+  color: red;
+}
+
 @media (min-width: 640px) {
   .main__pics--container {
     display: -ms-grid;
@@ -443,6 +456,114 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes heartbeat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  5% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  10% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  15% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  20% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  40% {
+    transofmr: scale(0.8);
+  }
+  45% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  50% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  55% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  60% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  65% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  70% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  5% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  10% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  15% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  20% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  40% {
+    transofmr: scale(0.8);
+  }
+  45% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  50% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  55% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  60% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  65% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  70% {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 /*# sourceMappingURL=Picture.css.map */

@@ -38,6 +38,15 @@
                 -webkit-box-shadow: 0px 0px 35px -12px rgba(0, 0, 0, 0.55);
                 box-shadow: 0px 0px 35px -12px rgba(0, 0, 0, 0.55);
             }
+            .likeButton {
+                color: $blackWeb;
+            }
+            .heartBeat {
+                animation: heartbeat 2s forwards;
+            }
+            .clicked {
+                color: red;
+            }
         }
     }
 }
@@ -401,5 +410,47 @@
     }
     100% {
         opacity: 0;
+    }
+}
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    5% {
+        transform: scale(1.2);
+    }
+    10% {
+        transform: scale(1.4);
+    }
+    15% {
+        transform: scale(1.2);
+    }
+    20% {
+        transform: scale(1.4);
+    }
+    40% {
+        transofmr: scale(0.8);
+    }
+    45% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    55% {
+        transform: scale(1.2);
+    }
+    60% {
+        transform: scale(1.4);
+    }
+    65% {
+        transform: scale(1.2);
+    }
+    70% {
+        transform: scale(1.4);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }
