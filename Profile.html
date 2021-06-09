@@ -70,6 +70,7 @@
                                 <i class="fas fa-camera"></i>
                             </a>
                         </div>
+                        <p class="profile__main--right-follow">Follow</p>
                         <div class="profile__main--right-info">
                             <div class="info__user">
                                 <p>Lady Sara</p>
@@ -124,23 +125,21 @@
 
                     <div class="profile__main--left">
                         <div class="left__header">
-                            <p class="left__header--follow">Follow</p>
                             <div class="left__header--category">
                                 <ul>
-                                    <li>ABOUT</li>
-                                    <li>PHOTOS</li>
+                                    <li id="about">ABOUT</li>
+                                    <li id="photos">PHOTOS</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="left__main">
                             <div class="left__main--photos">
-                                
+                                <div class="photoPart">
                                     <a
-                                        href=""    
-                                        class="photos__item"                              
+                                        href=""
+                                        class="photos__item"
                                         style="
                                             background: url(static/assets/images/1.jpg);
-                                            
                                         "
                                     ></a>
                                     <a
@@ -193,6 +192,53 @@
                                         "
                                     ></a>
                                 </div>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"
+                                                >Previous</a
+                                            >
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"
+                                                >Next</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="left__main--about">
+                                <p class="about__name">
+                                    نام و نام خانوادگی : <span>Lady Sara</span>
+                                </p>
+                                <p class="about__email">
+                                    ایمیل : <span>ladysarah@gmail.com</span>
+                                </p>
+                                <p class="about__regDate">
+                                    تاریخ ثبت نام : <span>2021/5/5</span>
+                                </p>
+                                <p class="about__bio">
+                                    بیوگرافی :
+                                    <span
+                                        >Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Quaerat consequuntur
+                                        aliquam alias ex sint, maiores iste
+                                        exercitationem doloremque, eveniet
+                                        nesciunt possimus! Architecto
+                                        exercitationem temporibus quod
+                                        necessitatibus nemo tempora, earum
+                                        dolor?</span
+                                    >
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -217,7 +263,7 @@
         <script src="./static/js/TimelineMax.min.js"></script>
         <script src="./static/js/TweenMax.min.js"></script>
         <script src="static/js/popper.min.js"></script>
-        <script src="./static/css/bootstrap.min.css"></script>
+        <script src="./static/js/bootstrap.min.js"></script>
         <script src="./static/js/owl.carousel.min.js"></script>
         <script src="./static/js/main.js"></script>
         <script src="./static/js/profile.js"></script>

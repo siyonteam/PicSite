@@ -43,7 +43,7 @@
         &--right {
             width: 30%;
             min-height: 530px;
-            // background-color: lightblue;
+            padding-bottom: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -79,9 +79,16 @@
                     color: $blackWeb;
                 }
             }
+            &-follow {
+                background-color: #5c7cfa;
+                padding: 7px 10px;
+                color: white;
+                cursor: pointer;
+                margin-top: 100px;
+            }
             &-info {
                 width: 100%;
-                margin-top: 100px;
+                margin-top: 25px;
                 flex: 1;
                 display: flex;
                 flex-direction: column;
@@ -173,6 +180,7 @@
                     margin-right: 20px;
                 }
                 &--category {
+                    margin-right: auto;
                     padding-left: 50px;
                     ul {
                         padding: 10px;
@@ -183,7 +191,7 @@
                                 font-weight: bold;
                             }
                             display: inline-block;
-                            margin-left: 30px;
+                            padding: 10px;
                             cursor: pointer;
                             color: #757575;
                         }
@@ -191,32 +199,312 @@
                 }
             }
             .left__main {
+                width: 100%;
+                height: 100%;
+                .pagination {
+                    direction: ltr;
+                }
                 &--photos {
+                    width: 100%;
+                    height: 100%;
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
-                    justify-content: space-around;
-                    flex-wrap: wrap;
-                    .photos__item {
-                        background-position: center center !important;
-                        background-repeat: no-repeat !important;
-                        background-size: cover !important;
-                        display: block;
-                        width: 200px;
-                        height: 150px;
-                        margin: 50px;
-                        border-radius: 5px;
 
-                        -webkit-box-shadow: 0px 0px 26px -13px #000000;
-                        box-shadow: 0px 0px 26px -13px #000000;
+                    .photoPart {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                        .photos__item {
+                            background-position: center center !important;
+                            background-repeat: no-repeat !important;
+                            background-size: cover !important;
+                            display: block;
+                            width: 200px;
+                            height: 150px;
+                            margin: 50px;
+                            border-radius: 5px;
+
+                            -webkit-box-shadow: 0px 0px 26px -13px #000000;
+                            box-shadow: 0px 0px 26px -13px #000000;
+                        }
+                    }
+                }
+                &--about {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 10px;
+                    display: none;
+                    p {
+                        width: 80%;
+                        text-align: right;
+                        font-weight: bold;
+                        span {
+                            font-weight: normal;
+                        }
+                    }
+
+                    .about__bio {
+                        width: 80%;
                     }
                 }
             }
         }
     }
-    // &__seperator {
-    //     width: 2px;
-    //     background-color: $blackWeb;
-    //     border-radius: 10px;
-    //     height: 200px;
-    // }
+}
+
+@media only screen and (max-width: 960px) {
+    .profile {
+        width: 100%;
+        height: auto;
+        &__header {
+            width: 100%;
+            height: auto;
+            position: relative;
+            &--image {
+                width: 100%;
+                height: 400px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+            }
+            &--headerUpload {
+                color: white;
+                position: absolute;
+                bottom: 100px;
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                background-color: $blackWeb;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+        &__main {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: $whitWeb;
+            padding-right: 0px;
+            &--right {
+                width: 80%;
+                min-height: 530px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                &-avatar {
+                    width: 150px;
+                    height: 150px;
+                    background-color: rgb(207, 207, 207);
+                    border-radius: 50%;
+                    position: relative;
+                    display: grid;
+                    place-items: center;
+                    position: absolute;
+                    top: -70px;
+                    overflow: hidden;
+                    img {
+                        width: 150px;
+                        height: 150px;
+                        object-fit: cover;
+                    }
+                    .avatarUpload {
+                        position: absolute;
+                        bottom: 0px;
+                        background-color: rgb(168, 168, 168);
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+                        font-size: 20px;
+                        padding: 10px;
+                        color: $blackWeb;
+                    }
+                }
+                &-info {
+                    width: 100%;
+                    margin-top: 25px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    .info__user {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        color: #bdbdbd;
+                        font-size: 13px;
+                        p {
+                            &:nth-child(1) {
+                                color: $blackWeb;
+                                font-weight: bold;
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                    .info__account {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: space-around;
+                        color: #757575;
+                        margin-top: 20px;
+                        &--stats {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            font-weight: bold;
+                            p:nth-child(2) {
+                                color: #bdbdbd;
+                                font-weight: normal;
+                            }
+                        }
+                        &--seperator {
+                            width: 90%;
+                            background-color: #bdbdbd;
+                            height: 1px;
+                            margin-top: 20px;
+                            margin-bottom: 25px;
+                            border-radius: 10px;
+                        }
+                        &--bio {
+                            width: 100%;
+                            color: #757575;
+                            font-size: 16px;
+                        }
+                        &--socials {
+                            width: 80%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
+                            font-size: 25px;
+                            font-weight: bold;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
+
+            &--left {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 50px;
+                .left__header {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    text-align: center;
+
+                    &--category {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        padding-left: 0px;
+
+                        ul {
+                            list-style: none;
+                            li {
+                                &:nth-child(2) {
+                                    color: #424242;
+                                    font-weight: bold;
+                                }
+                                display: inline-block;
+                                cursor: pointer;
+                                color: #757575;
+                            }
+                        }
+                    }
+                }
+                .left__main {
+                    width: 100%;
+                    height: 100%;
+                    .pagination {
+                        direction: ltr;
+                    }
+                    &--photos {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .photoPart {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
+                            flex-wrap: wrap;
+                            .photos__item {
+                                background-position: center center !important;
+                                background-repeat: no-repeat !important;
+                                background-size: cover !important;
+                                display: block;
+                                width: 200px;
+                                height: 150px;
+                                margin: 50px;
+                                border-radius: 5px;
+
+                                -webkit-box-shadow: 0px 0px 26px -13px #000000;
+                                box-shadow: 0px 0px 26px -13px #000000;
+                            }
+                        }
+                    }
+                    &--about {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: flex-start;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: 10px;
+                        display: none;
+                        p {
+                            width: 80%;
+                            text-align: right;
+                            font-weight: bold;
+                            span {
+                                font-weight: normal;
+                            }
+                        }
+
+                        .about__bio {
+                            width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
