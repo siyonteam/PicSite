@@ -54,6 +54,8 @@
 
 .main__pics--container .gallery__item .clicked {
   color: red;
+  -webkit-animation: heartbeat 2s forwards;
+          animation: heartbeat 2s forwards;
 }
 
 @media (min-width: 640px) {

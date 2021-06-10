@@ -11,17 +11,7 @@ container.addEventListener("click", (e) => {
     $.get("/pictures/" + picid, (data) => {
         modal.innerHTML = data;
         const closeButton = modal.querySelector(".gallery_detail--closeButton");
-        const likeButton = modal.querySelector(".likeButton");
-        likeButton.addEventListener("click", () => {
-            if (likeButton.classList.contains("clicked")) {
-                likeButton.classList.remove("clicked");
-                if (likeButton.classList.contains("heartBeat"))
-                    likeButton.classList.remove("heartBeat");
-            } else {
-                likeButton.classList.add("clicked");
-                likeButton.classList.add("heartBeat");
-            }
-        });
+        
         const openModal = (_) => {
             modal.classList.add("detail_show");
             modal.style.animation = "modalIn 500ms forwards";
@@ -34,7 +24,7 @@ container.addEventListener("click", (e) => {
         closeButton.addEventListener("click", () => {
             modal.style.animation = "modalOut 500ms forwards    ";
             modal.addEventListener("animationend", closeModal);
-            likeButton.classList.remove("heartBeat");
+        
         });
 
         openModal();

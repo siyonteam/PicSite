@@ -18,9 +18,9 @@ function like(elmnt){
         },
         function(data){
             if (data == "liked") {
-                elmnt.style.color = "red";
+                elmnt.classList.add("clicked");
             } else if(data == "unliked") {
-                elmnt.style.color = "black";
+                elmnt.classList.remove("clicked");
             }else {
                 if (window.confirm('you must login for like , clik ok to login ')) 
                 {

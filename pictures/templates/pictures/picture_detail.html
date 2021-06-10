@@ -9,14 +9,14 @@
         <div class="gallery_detail--container-header">
             <div class="likeButton">
             {% if is_liked %}
-                <a id="like" ><i class="fas fa-heart" data-id = "{{ pic.id }}"  data-action = "unlike" onclick = "like(this)"></i></a>
+                <a id="like" ><i class="fas fa-heart clicked"  data-id = "{{ pic.id }}"  data-action = "unlike" onclick = "like(this)"></i></a>
             {% else %}
-                <a id="like" ><i class="fas fa-heart" style = 'color:black ;' data-id = "{{ pic.id }}"  data-action = "like" onclick = "like(this)"></i></a>
+                <a id="like" ><i class="fas fa-heart"  data-id = "{{ pic.id }}"  data-action = "like" onclick = "like(this)"></i></a>
             {% endif %}
                 
             </div>
             <a href="#" class="fullDetail"  >
-                <p id="p">like</p>
+                <p id="p">ادامه پست</p>
             </a>
         </div>
         <div class="gallery_detail--container-img">
