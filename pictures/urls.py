@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import home , picture_detail , add_picture , edit_picture
+from .views import home , picture_detail , add_picture , edit_picture , like
 
 app_name = "pictures"
 urlpatterns = [
     path('',home , name="home"),
+    path('pictures/like/' , like , name="like"),
     path('pictures/categories/<slug:category_slug>/',home , name="category"),
     path('pictures/<int:pk>/',picture_detail , name="picture_detail"),
     path('pictures/<int:pk>/edit/',edit_picture , name='edot_picture'),

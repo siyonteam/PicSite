@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404 , render , redirect
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login , update_session_auth_hash
+from django.contrib import messages
+from django.contrib.auth import authenticate, login , update_session_auth_hash , logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import LoginForm , UserRegistrationForm , ChangePasswordForm , UserEditForm , ProfileEditForm
@@ -31,9 +32,10 @@ def login_user(request):
             if user is not None :
                 login(request , user)
                 return redirect("accounts:profile" , user.username)
-    else:
-        form = LoginForm()
-
+            else:
+                messages.error(request, 'incorrect username/password')
+   
+    form = LoginForm()
     return render(request , "accounts/login.html",{"form":form})
         
     
@@ -42,13 +44,18 @@ def user_register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            user = User.objects.create_user(cd['username'] , cd['email'] ,cd['password1'])
-            login(request , user)
+            user = form.save()
+            login(request , user , backend='django.contrib.auth.backends.ModelBackend')
             return redirect("accounts:profile" , user.username)
     else :
         form = UserRegistrationForm()
 
     return render(request , 'accounts/register.html' , {"form":form})
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect("pictures:home")
 
 @login_required
 def user_change_password(request):

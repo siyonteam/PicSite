@@ -38,6 +38,5 @@ container.addEventListener("click", (e) => {
         });
 
         openModal();
-        console.log("ok");
     });
 });

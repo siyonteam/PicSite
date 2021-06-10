@@ -1,3 +1,4 @@
+{% load static %}
 
 
     <div class="gallery_detail--closeButton">
@@ -7,10 +8,15 @@
     <div class="gallery_detail--container">
         <div class="gallery_detail--container-header">
             <div class="likeButton">
-                <i class="fas fa-heart"></i>
+            {% if is_liked %}
+                <a id="like" ><i class="fas fa-heart" data-id = "{{ pic.id }}"  data-action = "unlike" onclick = "like(this)"></i></a>
+            {% else %}
+                <a id="like" ><i class="fas fa-heart" style = 'color:black ;' data-id = "{{ pic.id }}"  data-action = "like" onclick = "like(this)"></i></a>
+            {% endif %}
+                
             </div>
-            <a href="#" class="fullDetail">
-                <p>دیدن جزئیات بیشتر</p>
+            <a href="#" class="fullDetail"  >
+                <p id="p">like</p>
             </a>
         </div>
         <div class="gallery_detail--container-img">
@@ -44,6 +50,5 @@
             </p>
         </div>
     </div>
-
 
 

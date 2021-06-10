@@ -6,7 +6,9 @@ from django.contrib.auth.models import User
 from django.db.models import Count
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.utils.text import slugify
+from friends.models import Like
 from .models import Picture , Category
 from .forms import AddPictureForm
 
@@ -48,11 +50,17 @@ def picture_detail(request , pk):
             return HttpResponse("")
         user = pic.user
         similar_pics = pic.tags.similar_objects()[:10]
+        is_liked = False
+        if request.user.is_authenticated:
+            liked = Like.objects.filter(user = request.user , pic = pic)
 
+            if liked.exists():
+                is_liked = True
         conetxt = {
             "pic": pic,
             "user": user,
             "similar_pics" : similar_pics,
+            'is_liked' : is_liked
         }
 
         return render(request , 'pictures/picture_detail.html',conetxt)
@@ -95,3 +103,26 @@ def edit_picture(request, pk):
 
     else:
         raise Http404("access denied")
+
+
+@require_POST
+def like(request):
+    if request.is_ajax():
+        if request.user.is_authenticated:
+            picid = request.POST.get('id')
+            pic = get_object_or_404(Picture , id=picid)
+            user = request.user
+            like =Like.objects.filter(pic=pic , user=user)
+
+            if like.exists():
+                like = Like.objects.get(pic=pic , user=user)
+                like.delete()
+                return HttpResponse("unliked")
+            else :
+                like = Like(pic=pic , user=user)
+                like.save()
+                return HttpResponse("liked")
+        else:
+            login_url = request.build_absolute_uri('/accounts/login/')
+            return HttpResponse(login_url)
+        
