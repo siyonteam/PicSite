@@ -1,5 +1,4 @@
 let container = document.querySelector(".main__pics--container");
-// let showDetail = document.querySelector(".imgDescription");
 
 container.addEventListener("click", (e) => {
     e.preventDefault();
@@ -8,13 +7,22 @@ container.addEventListener("click", (e) => {
     if (!modalToggle) return;
 
     const modal = modalToggle.nextElementSibling;
-    var picid = modal.getAttribute('data-picid');
-    $.get('/pictures/'+picid , function(data) {
-        modal.innerHTML = data
+    var picid = modal.getAttribute("data-picid");
+    $.get("/pictures/" + picid, (data) => {
+        modal.innerHTML = data;
         const closeButton = modal.querySelector(".gallery_detail--closeButton");
-        
+        const likeButton = modal.querySelector(".likeButton");
+        likeButton.addEventListener("click", () => {
+            if (likeButton.classList.contains("clicked")) {
+                likeButton.classList.remove("clicked");
+                if (likeButton.classList.contains("heartBeat"))
+                    likeButton.classList.remove("heartBeat");
+            } else {
+                likeButton.classList.add("clicked");
+                likeButton.classList.add("heartBeat");
+            }
+        });
         const openModal = (_) => {
-            
             modal.classList.add("detail_show");
             modal.style.animation = "modalIn 500ms forwards";
         };
@@ -26,9 +34,10 @@ container.addEventListener("click", (e) => {
         closeButton.addEventListener("click", () => {
             modal.style.animation = "modalOut 500ms forwards    ";
             modal.addEventListener("animationend", closeModal);
+            likeButton.classList.remove("heartBeat");
         });
 
-        openModal(); 
-        console.log("ok")
+        openModal();
+        console.log("ok");
     });
-})
+});
