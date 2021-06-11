@@ -12,17 +12,10 @@ container.addEventListener("click", (e) => {
     const closeButton = modal.querySelector(".gallery_detail--closeButton");
     const likeButton = modal.querySelector(".likeButton");
     likeButton.addEventListener("click", () => {
-        if (
-            likeButton.classList[1] === "clicked" &&
-            likeButton.classList.length === 2
-        ) {
+        if (likeButton.classList.contains("clicked")) {
             likeButton.classList.remove("clicked");
-        } else if (
-            likeButton.classList[1] === "clicked" &&
-            likeButton.classList.length === 3
-        ) {
-            likeButton.classList.remove("clicked");
-            likeButton.classList.remove("heartBeat");
+            if (likeButton.classList.contains("heartBeat"))
+                likeButton.classList.remove("heartBeat");
         } else {
             likeButton.classList.add("clicked");
             likeButton.classList.add("heartBeat");
@@ -34,14 +27,13 @@ container.addEventListener("click", (e) => {
     };
     const closeModal = (_) => {
         modal.classList.remove("detail_show");
-        likeButton.classList.remove("heartBeat");
-        likeButton.removeEventListener("animationend", closeModal);
         modal.removeEventListener("animationend", closeModal);
     };
 
     closeButton.addEventListener("click", () => {
         modal.style.animation = "modalOut 500ms forwards    ";
         modal.addEventListener("animationend", closeModal);
+        likeButton.classList.remove("heartBeat");
     });
 
     openModal();

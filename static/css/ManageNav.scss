@@ -1,0 +1,98 @@
+@import "./scss/Funcs";
+@import "./scss/Vars";
+.manageNav {
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    top: 0px;
+    right: 0px;
+    background-color: $whitWeb;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    transform: translateX(100%);
+    transition: ease-out 0.4s;
+    &.clicked {
+        transform: translateX(0%);
+    }
+    @include dropShadowBlack;
+
+    &__toggle {
+        background-color: #5c7cfa;
+
+        padding: 20px 6px 20px 7px;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        position: absolute;
+        left: -23.5px;
+        @include dropShadowBlack;
+        color: $whitWeb;
+
+        &:hover {
+            color: $whitWeb;
+        }
+    }
+    &__main {
+        width: 100%;
+        height: 100%;
+        // background-color: red;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        position: relative;
+        &--avatar {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(207, 207, 207);
+            @include dropShadowBlack;
+            border-radius: 50%;
+            cursor: pointer;
+            img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        &--menu {
+            list-style: none;
+            width: 100%;
+            margin-top: 20px;
+            li {
+                text-align: center;
+                width: 100%;
+                border-bottom: 1px solid #e0e0e0;
+                transition: 0.4s;
+                &:hover {
+                    background-color: $blackWeb;
+                    a {
+                        color: $whitWeb;
+                    }
+                }
+                a {
+                    color: $blackWeb;
+                    text-decoration: none;
+                    display: block;
+                    padding: 10px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        &--footer {
+            width: 100%;
+            background-color: $blackWeb;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 5px;
+            bottom: 0px;
+            .settings {
+                color: white;
+                font-size: 20px;
+            }
+        }
+    }
+}
