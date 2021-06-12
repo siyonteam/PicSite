@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.utils.text import slugify
 from friends.models import Like
+from common.decorators import ajax_required
 from .models import Picture , Category
 from .forms import AddPictureForm
 
@@ -106,23 +107,23 @@ def edit_picture(request, pk):
 
 
 @require_POST
+@ajax_required
 def like(request):
-    if request.is_ajax():
-        if request.user.is_authenticated:
-            picid = request.POST.get('id')
-            pic = get_object_or_404(Picture , id=picid)
-            user = request.user
-            like =Like.objects.filter(pic=pic , user=user)
+    if request.user.is_authenticated:
+        picid = request.POST.get('id')
+        pic = get_object_or_404(Picture , id=picid)
+        user = request.user
+        like =Like.objects.filter(pic=pic , user=user)
 
-            if like.exists():
-                like = Like.objects.get(pic=pic , user=user)
-                like.delete()
-                return HttpResponse("unliked")
-            else :
-                like = Like(pic=pic , user=user)
-                like.save()
-                return HttpResponse("liked")
-        else:
-            login_url = request.build_absolute_uri('/accounts/login/')
-            return HttpResponse(login_url)
+        if like.exists():
+            like = Like.objects.get(pic=pic , user=user)
+            like.delete()
+            return HttpResponse("unliked")
+        else :
+            like = Like(pic=pic , user=user)
+            like.save()
+            return HttpResponse("liked")
+    else:
+        login_url = request.build_absolute_uri('/accounts/login/')
+        return HttpResponse(login_url)
         
