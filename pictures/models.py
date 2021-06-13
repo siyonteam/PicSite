@@ -22,6 +22,8 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("pictures:category_detail", kwargs={"category_slug": self.slug,})
 class Picture(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE , related_name="pics")
     title = models.CharField(max_length=200 )

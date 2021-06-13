@@ -2,6 +2,7 @@
 
 
 {% load static %}
+{% load thumbnail %}
 
 
 {% block head %}
@@ -10,58 +11,27 @@
 
 
 
-{% block category %}
+{% block content %}
 
 <section id="categories">
     <p class="categories__headText">Categories</p>
     <div class="categories">
-        <div class="categories__item">
-            <a
-                class="photo"
-                href="#"
-                style="
-                    background-image: url({% static 'pictures/assets/images/1.jpg' %});
-                "
-            >
-                <div class="photo__description">Romantic</div>
-            </a>
-        </div>
-        <div class="categories__item">
-            <a
-                class="photo"
-                href="#"
-                style="
-                    background-image: url({% static 'pictures/assets/images/2.jpg' %});
-                "
-            >
-                <div class="photo__description">Chair</div>
-            </a>
-        </div>
-        <div class="categories__item">
-            <a
-                class="photo"
-                href="#"
-                style="
-                    background-image: url({% static 'pictures/assets/images/3.jpg' %});
-                "
-            >
-                <div class="photo__description">Churchs</div>
-            </a>
-        </div>
-        <div class="categories__item">
-            <a
-                class="photo"
-                href="#"
-                style="
-                    background-image: url({% static 'pictures/assets/images/4.jpg' %});
-                "
-            >
-                <div class="photo__description">wallpapers</div>
-            </a>
-        </div>
-        
-    </div>
+        {% for cat in cats%}
+            {% thumbnail cat.image "800x800"  as im %}
+                <div class="categories__item">
+                    <a
+                        class="photo"
+                        href="{{ cat.get_absolute_url }}"
+                        style="
+                            background-image: url({{ im.url }});
+                        "
+                    >
+                        <div class="photo__description">{{ cat.name }}</div>
+                    </a>
+                </div>
+            {% endthumbnail %}
+        {% endfor %}
 </section>
-{% endblock category %}
+{% endblock content %}
 
 

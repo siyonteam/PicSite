@@ -124,3 +124,6 @@ def like(request):
         like.save()
         return HttpResponse("liked")
     
+def catalog(request):
+    cats = Category.objects.all()
+    return render(request , 'pictures/categories.html' , {'cats':cats})
