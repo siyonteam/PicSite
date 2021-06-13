@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login , update_session_auth_hash , logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
+from django.urls import reverse_lazy
 from .models import Profile
 from .forms import LoginForm , UserRegistrationForm , ChangePasswordForm , UserEditForm , ProfileEditForm
 
@@ -97,3 +99,19 @@ def edit_profile(request , username):
         }
 
         return render(request , 'accounts/edit_profile.html',context)
+
+
+class UserPassReset(auth_views.PasswordResetView):
+	template_name = 'accounts/password_reset.html'
+	success_url = reverse_lazy('accounts:password_reset_done')
+	email_template_name = 'accounts/password_reset_email.html'
+
+class PasswordResetDone(auth_views.PasswordResetDoneView):
+	template_name = 'accounts/password_reset_done.html'
+
+class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
+	template_name = 'accounts/password_reset_confirm.html'
+	success_url = reverse_lazy('accounts:password_reset_complete')
+
+class PasswordResetComplete(auth_views.PasswordResetCompleteView):
+	template_name = 'accounts/password_reset_complete.html'
