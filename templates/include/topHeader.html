@@ -2,8 +2,14 @@
 <div class="topHeader">
     <div class="topHeader__right">
         <ul>
-            <li><a href="">دسته بندی</a></li>
-            <li><a href=""> ناحیه کاربری</a></li>
+            <li><a href="{% url 'pictures:categories' %}"> دسته بندی</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'accounts:profile' request.user.username %}"> ناحیه کاربری</a></li>
+                <li><a href="{% url 'accounts:logout' %}">خروج</a></li>
+            {% else %}
+                <li><a href="{% url 'accounts:login' %}">ورود</a></li>
+                <li><a href="{% url 'accounts:register' %}">ثبت نام</a></li>
+            {% endif %}
         </ul>
     </div>
     <div class="topHeader__left">

@@ -1,4 +1,5 @@
 {% load static %}
+{% load pic_tags %}
 <div class="header">
     <div class="header__tag">
         <p>بهترین ماه</p>
@@ -8,10 +9,10 @@
             <span class="showdisc" id="showdisc">
                 <i class="fas fa-exclamation-circle"></i>
             </span>
-
+            {% best_month as best_month_pic %}
             <img
                 id="topMonthImage"
-                src="{% static "assets/images/bestMonth.jpg" %}"
+                src="{{ best_month_pic.pic.url }}"
                 alt=""
             />
             <div class="header__bestMonth--disc">
@@ -19,24 +20,12 @@
                     <i class="fas fa-times"></i>
                 </span>
 
-                <p>نام کاربر : <span>سیامک علیپور فرد</span></p>
-                <p>تعداد پسندیدن ها : <span>15931</span></p>
+                <p>نام کاربر : <span>{{ best_month_pic.user.username }}</span></p>
+                <p>تعداد پسندیدن ها : <span>{{ best_month_pic.likes.all.count }}</span></p>
                 <p>
                     توضیحات :
                     <span
-                        >لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
-                        چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-                        بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با
-                        هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت
-                        و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و
-                        متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را
-                        برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ
-                        پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید
-                        داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط
-                        سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
-                        دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود
-                        طراحی اساسا مورد استفاده قرار گیرد.</span
+                        >{{ best_month_pic.description }}</span
                     >
                 </p>
                 <i class="fas fa-heart likeTopMonth"></i>
