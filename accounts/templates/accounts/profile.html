@@ -1,14 +1,212 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'accounts/css/Profile.css' %} "> 
+{% endblock head %}
+
+
+
 {% block content %}
 
+<section id="profile">
+    <div class="profile">
+        <div class="profile__header">
+            <a
+                href=""
+                class="profile__header--image"
+                style="
+                    background-image: url({% static 'assets/images/galaxy-11098.jpg' %});
+                "
+            ></a>
+            <a href="#" class="profile__header--headerUpload"
+                ><i class="fas fa-image"></i
+            ></a>
+        </div>
+        <div class="profile__main">
+            <div class="profile__main--right">
+                <div class="profile__main--right-avatar">
+                    <img src="{% static 'assets/images/profileAvatar.jpg' %}" alt="" />
+                    <a href="#" class="avatarUpload">
+                        <i class="fas fa-camera"></i>
+                    </a>
+                </div>
+                <p class="profile__main--right-follow">Follow</p>
+                <div class="profile__main--right-info">
+                    <div class="info__user">
+                        <!-- username -->
+                        <p>Lady Sara</p> 
+                        <!-- email -->
+                        <p>ladysarah@gmail.com</p>
+                    </div>
+                    <div class="info__account">
+                        <!-- information about user like followers and etc -->
+                        <span class="info__account--stats">
+                            <p>301213</p>
+                            <p>Posts</p>
+                        </span>
 
-    <p>{{usr.username}}</p><br>
-    <p>{{user.username}}</p>
+                        <span class="info__account--stats">
+                            <p>200</p>
+                            <p>Following</p>
+                        </span>
+                        <span class="info__account--stats">
+                            <p>4093</p>
+                            <p>Followers</p>
+                        </span>
+                    </div>
+                    <span class="info__account--seperator"></span>
+                    <p class="info__account--bio">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Id eum, recusandae voluptas repellat adipisci
+                        assumenda eos vero illum eius sint possimus molestias
+                        illo amet minima. Deleniti a culpa tempore ea?
+                    </p>
+                    <div class="info__account--socials">
+                        <a href="#">
+                            <i
+                                class="fab fa-facebook-f"
+                                style="color: #3b5998"
+                            ></i>
+                        </a>
+                        <a href="#"
+                            ><i
+                                class="fab fa-pinterest"
+                                style="color: #c8232c"
+                            ></i
+                        ></a>
+
+                        <a href="#"
+                            ><i
+                                class="fab fa-twitter"
+                                style="color: #1da1f2"
+                            ></i
+                        ></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile__main--left">
+                <div class="left__header">
+                    <div class="left__header--category">
+                        <ul>
+                            <li id="about">ABOUT</li>
+                            <li id="photos">PHOTOS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="left__main">
+                    <div class="left__main--photos">
+                        <div class="photoPart">
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/1.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/2.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/3.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/4.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/5.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/6.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/1.jpg' %});
+                                "
+                            ></a>
+                            <a
+                                href=""
+                                class="photos__item"
+                                style="
+                                    background: url({% static 'assets/images/2.jpg' %});
+                                "
+                            ></a>
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Previous</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="left__main--about">
+                        <p class="about__name">
+                            نام و نام خانوادگی : <span>Lady Sara</span>
+                        </p>
+                        <p class="about__email">
+                            ایمیل : <span>ladysarah@gmail.com</span>
+                        </p>
+                        <p class="about__regDate">
+                            تاریخ ثبت نام : <span>2021/5/5</span>
+                        </p>
+                        <p class="about__bio">
+                            بیوگرافی :
+                            <span
+                                >Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Quaerat consequuntur aliquam
+                                alias ex sint, maiores iste exercitationem
+                                doloremque, eveniet nesciunt possimus!
+                                Architecto exercitationem temporibus quod
+                                necessitatibus nemo tempora, earum dolor?</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
 
 
-
-
+{% block script %}
+    <script src="{% static 'accounts/js/profile.js' %}"></script>
+{% endblock script %}
