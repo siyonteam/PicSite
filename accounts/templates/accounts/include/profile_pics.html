@@ -18,21 +18,21 @@
         <ul class="pagination">
             {% if pics.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href=""  data-page="{{pics.previous_page_number }}">Previous</a>
+                    <button type="submit" class="page-link"  data-page="{{pics.previous_page_number }}">Previous</button>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="" data-page="1">1</a>
+                    <button type="submit" class="page-link" data-page="1">1</button>
                 </li>
             {% endif %}
             <li class="page-item">
-                <a class="page-link" href="">{{ pics.number }}</a>
+                <button type="submit" class="page-link" >{{ pics.number }}</button>
             </li>
             {% if pics.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="" data-page="{{ pics.paginator.num_pages }}">{{ pics.paginator.num_pages }}</a>
+                    <button type="submit" class="page-link" data-page="{{ pics.paginator.num_pages }}">{{ pics.paginator.num_pages }}</button>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="" data-page="{{ pics.next_page_number }}">Next</a>
+                    <button type="submit" class="page-link"  data-page="{{ pics.next_page_number }}">Next</button>
                 </li>
             {% endif %}
         </ul>
