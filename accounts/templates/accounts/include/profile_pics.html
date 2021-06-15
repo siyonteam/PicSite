@@ -26,7 +26,7 @@
             {% endif %}
             <li class="page-item active">
 
-                <button type="submit" class="page-link" >{{ pics.number }}</button>
+                <button type="submit" class="page-link" data-page="{{ pics.number }}">{{ pics.number }}</button>
 
             </li>
             {% if pics.has_next %}

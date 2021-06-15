@@ -25,7 +25,7 @@
     </head>
     <body>
         <section id="topheader">{% include "include/topHeader.html" %}</section>
-
+        {% block fullcontent %}
         <section id="header">{% include "include/header.html" %}</section>
 
         <section id="main">
@@ -38,6 +38,7 @@
                 {% block content %} {% endblock content %}
             </div>
         </section>
+        {% endblock fullcontent %}
         <section id="footer">{% include "include/footer.html" %}</section>
         <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
         <script src="{% static 'js/TweenMax.min.js' %}"></script>

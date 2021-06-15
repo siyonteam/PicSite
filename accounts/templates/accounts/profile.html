@@ -8,7 +8,7 @@
 
 
 
-{% block content %}
+{% block fullcontent %}
 
 <section id="profile">
     <div class="profile">
@@ -32,7 +32,11 @@
                         <i class="fas fa-camera"></i>
                     </a>
                 </div>
-                <p class="profile__main--right-follow">Follow</p>
+                {% if request.user != user %}
+                    <p class="profile__main--right-follow" data-sender="{{ request.user.id }}" data-reciver="{{ user.id }}">{{ is_follow }}</p>
+                {% else %}
+                    <br><br><br>
+                {% endif %}
                 <div class="profile__main--right-info">
                     <div class="info__user">
                         <!-- username -->
@@ -43,7 +47,7 @@
                     <div class="info__account">
                         <!-- information about user like followers and etc -->
                         <span class="info__account--stats">
-                            <p>{{pics.count}}</p>
+                            <p>{{user.pics.all.count}}</p>
                             <p>Posts</p>
                         </span>
 
@@ -52,7 +56,7 @@
                             <p>Following</p>
                         </span>
                         <span class="info__account--stats">
-                            <p>{{ user.followers.all.count }}</p>
+                            <p id="followers">{{ user.followers.all.count }}</p>
                             <p>Followers</p>
                         </span>
                     </div>
@@ -121,7 +125,7 @@
     </div>
 </section>
 
-{% endblock content %}
+{% endblock fullcontent %}
 
 
 {% block script %}

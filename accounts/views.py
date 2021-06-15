@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404 , render , redirect
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
@@ -7,40 +8,40 @@ from django.contrib.auth import authenticate, login , update_session_auth_hash ,
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
+from common.decorators import ajax_required , ajax_login_required
+from friends.models import Friend
 from .models import Profile
 from .forms import LoginForm , UserRegistrationForm , ChangePasswordForm , UserEditForm , ProfileEditForm
 
 
-class ProfileView(DetailView):
-    model = User
-    context_object_name = "usr" 
-    template_name = 'accounts/profile.html'
 
-    def get_object(self):
-        return get_object_or_404(User , username=self.kwargs.get('username'))
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["profile"] = context["usr"].profile 
-        context["pics"] = context["usr"].pics
-        return context
 
 
 def profile(request , username):
     user = get_object_or_404(User, username=username)
+
+
     profilee =user.profile
     pics = user.pics.all()
-    paginator = Paginator(pics , 2)
+    paginator = Paginator(pics , 8)
     context = {
         'user':user,
         'profile':profilee,
     }
+
     page = request.GET.get('page')
     if page :
         page_obj = paginator.get_page(page)
         context['pics']=page_obj
         return render(request , 'accounts/include/profile_pics.html' , context)
     else:
+        if request.user != user :
+            is_follow = "follow"
+            relation = Friend.objects.filter(sender=request.user , reciver=user)
+            if relation.exists():
+                is_follow="unfollow"
+            context['is_follow']=is_follow
         page_obj = paginator.get_page(1)
         context['pics']=page_obj
         return render(request , 'accounts/profile.html' , context)
@@ -136,3 +137,33 @@ class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
 
 class PasswordResetComplete(auth_views.PasswordResetCompleteView):
 	template_name = 'accounts/password_reset_complete.html'
+    
+    
+@require_POST
+@ajax_required
+@ajax_login_required
+def follow_user(request):
+
+    sender_id = request.POST.get('sender')
+    reciver_id = request.POST.get('reciver')
+    
+    sender =get_object_or_404(User, id=sender_id)
+    
+    reciver = get_object_or_404(User , id=reciver_id)
+
+    relation = Friend.objects.filter(sender=sender , reciver=reciver)
+    if relation.exists():
+        relation[0].delete()
+        is_follow = False
+        #return JsonResponse({'isFollow':False})
+    else :
+        relation = Friend(sender=sender , reciver=reciver)
+        relation.save()
+        is_follow = True
+        #return JsonResponse({'isFollow':True})
+    followers = reciver.followers.all().count()
+    context = {
+        "isFollow": is_follow,
+        "followers" : followers
+    }
+    return JsonResponse(context)
