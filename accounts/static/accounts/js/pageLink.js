@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".page-link").click(function (e) {
+    $(".page-link").onClick(function (e) {
         e.preventDefault();
         alert("hi");
         let page = $(this).attr("data-page");

@@ -30,7 +30,7 @@ def profile(request , username):
     user = get_object_or_404(User, username=username)
     profilee =user.profile
     pics = user.pics.all()
-    paginator = Paginator(pics , 8)
+    paginator = Paginator(pics , 2)
     context = {
         'user':user,
         'profile':profilee,
