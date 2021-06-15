@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404 , render , redirect
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
@@ -23,6 +24,26 @@ class ProfileView(DetailView):
         context["profile"] = context["usr"].profile 
         context["pics"] = context["usr"].pics
         return context
+
+
+def profile(request , username):
+    user = get_object_or_404(User, username=username)
+    profilee =user.profile
+    pics = user.pics.all()
+    paginator = Paginator(pics , 8)
+    context = {
+        'user':user,
+        'profile':profilee,
+    }
+    page = request.GET.get('page')
+    if page :
+        page_obj = paginator.get_page(page)
+        context['pics']=page_obj
+        return render(request , 'accounts/include/profile_pics.html' , context)
+    else:
+        page_obj = paginator.get_page(1)
+        context['pics']=page_obj
+        return render(request , 'accounts/profile.html' , context)
 
 
 def login_user(request):

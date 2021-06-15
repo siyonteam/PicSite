@@ -1,0 +1,40 @@
+{% load static %}
+{% load thumbnail %}
+<div class="left__main--photos">
+    <div class="photoPart">
+        {% for pic in pics %}
+            {% thumbnail pic.pic "800x800"  as im %}
+                <a
+                    href=""
+                    class="photos__item"
+                    style="
+                        background: url({{ im.url }});
+                    "
+                ></a>
+            {% endthumbnail %}
+        {% endfor %}
+    </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if pics.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="#"  data-page="{{pics.previous_page_number }}">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" data-page="1">1</a>
+                </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link" href="#">{{ pics.number }}</a>
+            </li>
+            {% if pics.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="#" data-page="{{ pics.paginator.num_pages }}">{{ pics.paginator.num_pages }}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#" data-page="{{ pics.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

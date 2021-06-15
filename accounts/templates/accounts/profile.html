@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load thumbnail %}
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'accounts/css/Profile.css' %} "> 
@@ -27,7 +27,7 @@
         <div class="profile__main">
             <div class="profile__main--right">
                 <div class="profile__main--right-avatar">
-                    <img src="{% static 'assets/images/profileAvatar.jpg' %}" alt="" />
+                    <img src="{{ profile.avtar.url }}" alt="" />
                     <a href="#" class="avatarUpload">
                         <i class="fas fa-camera"></i>
                     </a>
@@ -36,32 +36,29 @@
                 <div class="profile__main--right-info">
                     <div class="info__user">
                         <!-- username -->
-                        <p>Lady Sara</p> 
+                        <p>{{user.username}}</p> 
                         <!-- email -->
-                        <p>ladysarah@gmail.com</p>
+                        <p>{{ user.email }}</p>
                     </div>
                     <div class="info__account">
                         <!-- information about user like followers and etc -->
                         <span class="info__account--stats">
-                            <p>301213</p>
+                            <p>{{pics.count}}</p>
                             <p>Posts</p>
                         </span>
 
                         <span class="info__account--stats">
-                            <p>200</p>
+                            <p>{{ user.following.all.count }}</p>
                             <p>Following</p>
                         </span>
                         <span class="info__account--stats">
-                            <p>4093</p>
+                            <p>{{ user.followers.all.count }}</p>
                             <p>Followers</p>
                         </span>
                     </div>
                     <span class="info__account--seperator"></span>
                     <p class="info__account--bio">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Id eum, recusandae voluptas repellat adipisci
-                        assumenda eos vero illum eius sint possimus molestias
-                        illo amet minima. Deleniti a culpa tempore ea?
+                        {{ profile.bio }}
                     </p>
                     <div class="info__account--socials">
                         <a href="#">
@@ -97,104 +94,24 @@
                     </div>
                 </div>
                 <div class="left__main">
-                    <div class="left__main--photos">
-                        <div class="photoPart">
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/1.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/2.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/3.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/4.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/5.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/6.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/1.jpg' %});
-                                "
-                            ></a>
-                            <a
-                                href=""
-                                class="photos__item"
-                                style="
-                                    background: url({% static 'assets/images/2.jpg' %});
-                                "
-                            ></a>
-                        </div>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Previous</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div id="profile_pics">
+                        {% include 'accounts/include/profile_pics.html' %}
                     </div>
                     <div class="left__main--about">
                         <p class="about__name">
-                            نام و نام خانوادگی : <span>Lady Sara</span>
+                            نام و نام خانوادگی : <span>{{ user.first_name }}</span><span> {{ user.last_name }}</span>
                         </p>
                         <p class="about__email">
-                            ایمیل : <span>ladysarah@gmail.com</span>
+                            ایمیل : <span>{{ user.email }}</span>
                         </p>
                         <p class="about__regDate">
-                            تاریخ ثبت نام : <span>2021/5/5</span>
+                            تاریخ ثبت نام : <span>{{user.date_joined}}</span>
                         </p>
                         <p class="about__bio">
                             بیوگرافی :
                             <span
-                                >Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Quaerat consequuntur aliquam
-                                alias ex sint, maiores iste exercitationem
-                                doloremque, eveniet nesciunt possimus!
-                                Architecto exercitationem temporibus quod
-                                necessitatibus nemo tempora, earum dolor?</span
+                                >{{ profile.bio }}
+                                    </span
                             >
                         </p>
                     </div>

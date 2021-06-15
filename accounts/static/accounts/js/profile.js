@@ -36,3 +36,15 @@ follow.addEventListener("click", () => {
         isFollow = true;
     }
 });
+
+$(document).ready(function () {
+    $(".page-link").click(function (e) {
+        let page = $(this).attr("data-page");
+        $.get("?page=" + page, function (data) {
+            document.getElementById("profile_pics").innerHTML=data ;
+    
+        });
+    });
+});
+
+
