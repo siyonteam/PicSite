@@ -1,7 +1,7 @@
 let follow = document.querySelector(".profile__main--right-follow");
 let isFollow = false;
 let aboutPart = document.querySelector(".left__main--about");
-let photosPart = document.querySelector(".left__main--photos");
+let photosPart = document.querySelector("#profile_pics");
 let aboutButton = document.getElementById("about");
 let photosButton = document.getElementById("photos");
 
@@ -36,15 +36,3 @@ follow.addEventListener("click", () => {
         isFollow = true;
     }
 });
-
-$(document).ready(function () {
-    $(".page-link").click(function (e) {
-        let page = $(this).attr("data-page");
-        $.get("?page=" + page, function (data) {
-            document.getElementById("profile_pics").innerHTML=data ;
-    
-        });
-    });
-});
-
-
