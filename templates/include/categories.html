@@ -1,36 +1,18 @@
 {% load static %}
+{% load thumbnail %}
+{% load pic_tags %}
 <div class="owl-carousel main__categories--slider">
-    <a href="">
-        <div class="item">
-            <div class="item__description">
-                <p class="">romantic</p>
+    {% get_random_cat as cats %}
+    {% for cat in cats %}
+        <a href="{{ cat.get_absolute_url }}">
+            <div class="item">
+                <div class="item__description">
+                    <p class="">{{ cat.name }}</p>
+                </div>
+                {% thumbnail cat.image "800x800"  as im  %}
+                    <img src="{{ im.url }}" alt="{{ cat.name }}" />
+                {% endthumbnail %}
             </div>
-            <img src="{% static "assets/images/romantic.jpg" %}" alt="" />
-        </div>
-    </a>
-    <!-- Each Category link -->
-    <a href="">
-        <div class="item">
-            <div class="item__description">
-                <p class="">nature</p>
-            </div>
-            <img src="{% static "assets/images/nature.jpg" %}" alt="" />
-        </div>
-    </a>
-    <a href="">
-        <div class="item">
-            <div class="item__description">
-                <p class="">historical</p>
-            </div>
-            <img src="{% static "assets/images/historical.jpg" %}" alt="" />
-        </div>
-    </a>
-    <a href="">
-        <div class="item">
-            <div class="item__description">
-                <p class="">wildlife</p>
-            </div>
-            <img src=" {% static "assets/images/owl4.jpg" %} " alt="" />
-        </div>
-    </a>
+        </a>
+    {% endfor %}
 </div>

@@ -18,6 +18,7 @@ class Profile(models.Model):
     phone_number = models.BigIntegerField(null=True , blank=True)
     bio = models.TextField(null=True , blank=True)
     avtar = models.ImageField(upload_to='avtars', default='default/avtar.png')
+    header = models.ImageField(upload_to='headers', default='default/header.jpg')
 
     def __str__(self) -> str:
         return self.user.username

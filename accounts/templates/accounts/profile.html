@@ -13,13 +13,15 @@
 <section id="profile">
     <div class="profile">
         <div class="profile__header">
+            {% thumbnail profile.header "1000x1000" as im %}
             <a
                 href=""
                 class="profile__header--image"
                 style="
-                    background-image: url({% static 'assets/images/galaxy-11098.jpg' %});
+                    background-image: url({{ im.url }});
                 "
             ></a>
+            {% endthumbnail %}
             <a href="#" class="profile__header--headerUpload"
                 ><i class="fas fa-image"></i
             ></a>
@@ -27,7 +29,9 @@
         <div class="profile__main">
             <div class="profile__main--right">
                 <div class="profile__main--right-avatar">
-                    <img src="{{ profile.avtar.url }}" alt="" />
+                    {% thumbnail profile.avtar "800x800" as im %}
+                    <img src="{{im.url }}" alt="" />
+                    {% endthumbnail %}
                     <a href="#" class="avatarUpload">
                         <i class="fas fa-camera"></i>
                     </a>
