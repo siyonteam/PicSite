@@ -8,10 +8,8 @@ class Category(models.Model):
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
-    up_cat = models.ForeignKey('self' , on_delete=models.CASCADE , null=True , blank=True , related_name='sub_cats')
-    is_sub_cat = models.BooleanField(default=False)
     image = models.ImageField(upload_to='categories')
-    craeted = models.DateField(auto_now_add=True)
+    created = models.DateField(auto_now_add=True)
     updated = models.DateTimeField( auto_now=True)
 
     class Meta:
@@ -24,6 +22,9 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse("pictures:category_detail", kwargs={"category_slug": self.slug,})
+
+
+
 class Picture(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE , related_name="pics")
     title = models.CharField(max_length=200 )
@@ -32,7 +33,7 @@ class Picture(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category ,on_delete=models.CASCADE ,related_name="pics")
     tags = TaggableManager()
-    craeted = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
 

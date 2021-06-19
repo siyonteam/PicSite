@@ -10,5 +10,4 @@ urlpatterns = [
     path('pictures/<int:pk>/edit/',edit_picture , name='edot_picture'),
     path('pictures/add/',add_picture , name="add_picture"),
     path('pictures/categories/' ,catalog , name='categories')
-    
 ]

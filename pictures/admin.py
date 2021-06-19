@@ -11,6 +11,6 @@ class PictureAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name' , 'is_sub_cat', 'up_cat', 'updated')
-    list_filter = ('updated' , 'up_cat')
+    list_display = ('name' , 'updated')
+    list_filter = ('updated' ,)
     prepopulated_fields = {'slug':('name',)}
