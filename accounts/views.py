@@ -20,30 +20,34 @@ from .forms import LoginForm , UserRegistrationForm , ChangePasswordForm , UserE
 
 def profile(request , username):
     user = get_object_or_404(User, username=username)
-
-
-    profilee =user.profile
     pics = user.pics.all()
     paginator = Paginator(pics , 8)
-    context = {
-        'user':user,
-        'profile':profilee,
-    }
 
     page = request.GET.get('page')
-    if page :
+    if page and request.is_ajax() :
         page_obj = paginator.get_page(page)
-        context['pics']=page_obj
-        return render(request , 'accounts/include/profile_pics.html' , context)
+        return render(request , 'accounts/include/profile_pics.html' , {'pics':page_obj,})
     else:
-        if request.user != user :
-            is_follow = "follow"
-            relation = Friend.objects.filter(sender=request.user , reciver=user)
-            if relation.exists():
-                is_follow="unfollow"
-            context['is_follow']=is_follow
+        profilee =user.profile
         page_obj = paginator.get_page(1)
-        context['pics']=page_obj
+        context = {
+            'user':user,
+            'profile':profilee,
+            'pics':page_obj,
+        }
+        if request.user != user :
+            if request.user.is_authenticated :
+                is_follow = "follow"
+                relation = Friend.objects.filter(sender=request.user , reciver=user)
+                if relation.exists():
+                    is_follow="unfollow"
+                context['is_follow']=is_follow
+            
+            else:
+
+                context['is_follow']="follow"
+
+
         return render(request , 'accounts/profile.html' , context)
 
 

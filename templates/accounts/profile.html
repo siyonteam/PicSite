@@ -113,7 +113,7 @@
                             ایمیل : <span>{{ user.email }}</span>
                         </p>
                         <p class="about__regDate">
-                            تاریخ ثبت نام : <span>{{user.date_joined}}</span>
+                            تاریخ ثبت نام : <span>{{user.date_joined | date:"D d M Y" }}</span>
                         </p>
                         <p class="about__bio">
                             بیوگرافی :
@@ -134,5 +134,4 @@
 
 {% block script %}
     <script src="{% static 'accounts/js/profile.js' %}"></script>
-    <script src="{% static 'accounts/js/pageLink.js' %}"></script>
 {% endblock script %}

@@ -10,6 +10,7 @@
 
 {% endblock %} 
 
+<!-- Content Section -->
 {% block content %}
 <div class="dropdown main__pics--dropdown">
     <button
@@ -29,6 +30,7 @@
     </div>
 </div>
 <div class="main__pics--container" id="image-list">
+    <!-- include list of post html page  -->
     {% include 'pictures/include/list_ajax.html' %}
 </div>
 
@@ -36,8 +38,11 @@
 {% endblock content %}
 
 {% block script %} 
+<!-- Js Script For detail page  overlay -->
 <script src="{% static "pictures/js/details.js" %}"></script>
+<!-- Js script for ajax pagination -->
 <script src="{% static "pictures/js/list_ajax.js" %}"></script>
+<!-- Js script for ajax like views  -->
 <script src="{% static "pictures/js/like_ajax.js" %}"></script>
 
 {% endblock script %}

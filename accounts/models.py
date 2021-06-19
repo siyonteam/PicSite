@@ -24,13 +24,7 @@ class Profile(models.Model):
         return self.user.username
 
 
-# post save signale for createing profile when user object create
-def save_profile(sender , instance , created , **kwargs):
-    if created :
-        profile = Profile(user = instance)
-        profile.save()
 
-post_save.connect(save_profile, sender=User)
 
 
 

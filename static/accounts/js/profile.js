@@ -43,6 +43,7 @@ photosButton.addEventListener("click", () => {
     photoButStyle();
 });
 
+// ajax follow
 follow.addEventListener("click", () => {
     let senderId=follow.dataset.sender
     let reciverId=follow.dataset.reciver
@@ -54,13 +55,30 @@ follow.addEventListener("click", () => {
             reciver:reciverId
         },
         success : function(data){
-            if (data.isFollow) {
+            console.log(data)
+            if (data.isFollow == true) {
                 follow.textContent = "unfollow";
-            } else if (!(data.isFollow)) {
+                document.getElementById("followers").innerHTML=data.followers
+            } else if (data.isFollow == false ) {
                 follow.textContent = "follow";
-            }
-            document.getElementById("followers").innerHTML=data.followers
-            console.log(data.isFollow)
+                document.getElementById("followers").innerHTML=data.followers
+            }else {
+                if (window.confirm('you must login for like , clik ok to login ')) 
+                {
+                    window.location.href=data.loginUrl;
+                };
+            } 
         }  
+    });
+});
+
+// ajax get the page 
+$(document).ready(function () {
+    $("body").on("click", ".page-link", function (e) {
+        e.preventDefault();
+        let page = $(this).attr("data-page");
+        $.get("?page=" + page, function (data) {
+            document.getElementById("profile_pics").innerHTML = data;
+        });
     });
 });

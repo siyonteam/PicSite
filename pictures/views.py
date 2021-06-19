@@ -13,10 +13,11 @@ from common.decorators import ajax_required , ajax_login_required
 from .models import Picture , Category
 from .forms import AddPictureForm
 
-
+# home page view 
 def home(request , category_slug=None):
     all_pics = Picture.objects.all()
     
+    # category view
     if category_slug:
         category = get_object_or_404(Category , slug=category_slug)
         all_pics = all_pics.filter(category = category)
@@ -26,45 +27,52 @@ def home(request , category_slug=None):
 
     try :
         pics = paginator.page(page)
+    # if error is page not found view get the page 1
     except PageNotAnInteger:
         pics = paginator.page(1)
+
+    
     except EmptyPage:
+        # if reguest id ajax return empty data 
         if request.is_ajax() : 
             return HttpResponse('')
+
+        # if error is page not found view get the last page
         pics = paginator.page(paginator.num_pages)
   
     context = {
         'pics':pics,
     }
-
+    # if request id ajax append renderd list_ajax.html to the home.html
     if request.is_ajax() :
         return render(request , 'pictures/include/list_ajax.html' , context)
 
+    # render home.html 
     return render(request,'pictures/home.html',context)
 
-
+@ajax_required
 def picture_detail(request , pk):
-    if request.is_ajax():
-        try :
-            pic = get_object_or_404(Picture , pk = pk)
-        except :
-            return HttpResponse("")
-        user = pic.user
-        similar_pics = pic.tags.similar_objects()[:10]
-        is_liked = False
-        if request.user.is_authenticated:
-            liked = Like.objects.filter(user = request.user , pic = pic)
+    try :
+        pic = get_object_or_404(Picture , pk = pk)
+    except :
+        return HttpResponse(" Picture not found ")
+    
+    user = pic.user
+    similar_pics = pic.tags.similar_objects()[:10]
+    is_liked = False
+    if request.user.is_authenticated:
+        liked = Like.objects.filter(user = request.user , pic = pic)
 
-            if liked.exists():
-                is_liked = True
-        conetxt = {
-            "pic": pic,
-            "user": user,
-            "similar_pics" : similar_pics,
-            'is_liked' : is_liked
-        }
+        if liked.exists():
+            is_liked = True
+    conetxt = {
+        "pic": pic,
+        "user": user,
+        "similar_pics" : similar_pics,
+        'is_liked' : is_liked
+    }
 
-        return render(request , 'pictures/picture_detail.html',conetxt)
+    return render(request , 'pictures/picture_detail.html',conetxt)
 
 
 @login_required
@@ -110,6 +118,7 @@ def edit_picture(request, pk):
 @ajax_required
 @ajax_login_required
 def like(request):
+    # picid == picture id
     picid = request.POST.get('id')
     pic = get_object_or_404(Picture , id=picid)
     user = request.user
@@ -118,11 +127,11 @@ def like(request):
     if like.exists():
         like = Like.objects.get(pic=pic , user=user)
         like.delete()
-        return HttpResponse("unliked")
+        return JsonResponse({"isLike":False})
     else :
         like = Like(pic=pic , user=user)
         like.save()
-        return HttpResponse("liked")
+        return JsonResponse({"isLike":True})
     
 def catalog(request):
     cats = Category.objects.all()

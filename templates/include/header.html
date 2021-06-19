@@ -1,5 +1,7 @@
 {% load static %}
 {% load pic_tags %}
+{% load thumbnail %}
+
 <div class="header">
     <div class="header__tag">
         <p>بهترین ماه</p>
@@ -9,12 +11,15 @@
             <span class="showdisc" id="showdisc">
                 <i class="fas fa-exclamation-circle"></i>
             </span>
+            <!-- return best month picture -->
             {% best_month as best_month_pic %}
-            <img
-                id="topMonthImage"
-                src="{{ best_month_pic.pic.url }}"
-                alt=""
-            />
+            {% thumbnail best_month_pic.pic "800x800"  as im %}
+                <img
+                    id="topMonthImage"
+                    src="{{ im.url }}"
+                    alt=""
+                />
+            {% endthumbnail %}
             <div class="header__bestMonth--disc">
                 <span class="closedisk" id="closedisk">
                     <i class="fas fa-times"></i>

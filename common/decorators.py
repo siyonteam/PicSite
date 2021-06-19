@@ -1,5 +1,5 @@
-from django.http import HttpResponseBadRequest , HttpResponse
-
+from django.http import HttpResponseBadRequest , JsonResponse
+from django.urls import reverse
 
 def ajax_required(f):
     def wrap(request, *args, **kwargs):
@@ -13,7 +13,8 @@ def ajax_required(f):
 def ajax_login_required(f):
     def wrap(request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return HttpResponse("not authenticated")
+            login_url= request.build_absolute_uri(reverse('accounts:login'))
+            return JsonResponse({"loginUrl":login_url})
         return f(request, *args, **kwargs)
     wrap.__doc__=f.__doc__
     wrap.__name__=f.__name__
