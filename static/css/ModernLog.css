@@ -73,6 +73,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .loginBox__right > span {
@@ -102,7 +104,7 @@ body {
   padding: 10px;
 }
 
-.loginBox__left h1 {
+.loginBox__left h4 {
   color: #212121;
   margin-top: 30px;
 }
@@ -153,5 +155,6 @@ body {
   font-size: 15px;
   margin-top: 20px;
   cursor: pointer;
+  border-radius: 0.25rem;
 }
 /*# sourceMappingURL=ModernLog.css.map */
