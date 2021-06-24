@@ -43,6 +43,19 @@ photosButton.addEventListener("click", () => {
     photoButStyle();
 });
 
+
+
+// ajax get the page 
+$(document).ready(function () {
+    $("body").on("click", ".page-link", function (e) {
+        e.preventDefault();
+        let page = $(this).attr("data-page");
+        $.get("?page=" + page, function (data) {
+            document.getElementById("profile_pics").innerHTML = data;
+        });
+    });
+});
+
 // ajax follow
 follow.addEventListener("click", () => {
     let senderId=follow.dataset.sender
@@ -69,16 +82,5 @@ follow.addEventListener("click", () => {
                 };
             } 
         }  
-    });
-});
-
-// ajax get the page 
-$(document).ready(function () {
-    $("body").on("click", ".page-link", function (e) {
-        e.preventDefault();
-        let page = $(this).attr("data-page");
-        $.get("?page=" + page, function (data) {
-            document.getElementById("profile_pics").innerHTML = data;
-        });
     });
 });

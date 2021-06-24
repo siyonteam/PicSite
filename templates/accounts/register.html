@@ -14,12 +14,22 @@
     <body>
         <main>
             <div class="registerBox">
-                <h1>REGISTER</h1>
+                <h1>ثبت نام</h1>
+                {{ form.non_field_errors }}
                 <form action="" method = "post">
                     {% csrf_token %}
-                    {{ form }}
+                    
+                    {{ form.usernameerrors }}
+                    {{ form.username }}
+                    {{ form.email.errors }}
+                    {{ form.email }}
+                    {{ form.password1.errors }}
+                    {{ form.password1 }}
+                    {{ form.password2.errors }}
+                    {{ form.password2 }}
+
                     <button class="btn btn-primary btn-md" type="submit">
-                        Register
+                        ثبت نام
                     </button>
                 </form>
             </div>

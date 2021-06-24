@@ -61,7 +61,7 @@ def login_user(request):
                 login(request , user)
                 return redirect("accounts:profile" , user.username)
             else:
-                messages.error(request, 'incorrect username/password')
+                messages.error(request, 'نام کاربری / رمز اشتباه است')
    
     form = LoginForm()
     return render(request , "accounts/login.html",{"form":form})

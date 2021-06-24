@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load thumbnail %}
 
 <div class="manageNav">
     <a href="" class="manageNav__toggle">
@@ -7,10 +7,12 @@
     </a>
     <div class="manageNav__main">
         <div class="manageNav__main--avatar">
-            <img src="{% static "assets/images/profileAvatar.jpg" %}" alt="" />
+            {% thumbnail user.profile.avtar "800x800" as avtar %}
+                <img src="{{ avtar.url }}" alt="" />
+            {% endthumbnail%}
         </div>
         <ul class="manageNav__main--menu">
-            <li><a href=""> test </a></li>
+            <li><a href="{{user.profile.get_absolute_url}}"> پروفایل </a></li>
             <li><a href=""> test </a></li>
             <li><a href=""> test </a></li>
             <li><a href=""> test </a></li>

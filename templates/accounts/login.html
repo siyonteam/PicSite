@@ -14,7 +14,7 @@
     <body>
         <main>
             <div class="loginBox">
-                <h1>LOGIN</h1>
+                <h1>ورود</h1>
                 {% if messages %}
                     {% for message in messages %}
                         <p>{{message}}</p>
@@ -24,7 +24,7 @@
                     {% csrf_token %}
                     {{form}}
                     <button class="btn btn-primary btn-md" type="submit">
-                        Login
+                        ورود
                     </button>
                 </form>
             </div>

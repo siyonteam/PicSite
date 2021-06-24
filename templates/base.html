@@ -1,4 +1,5 @@
 {% load static %}
+{% load pic_tags %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +32,9 @@
     <body>
 
         <!-- manageNav -->
-        <section id="manageNav">{% include "include/manageNav.html" %} </section>
+        {% if request.user.is_authenticated %}
+            <section id="manageNav">{% manage_nav request %} </section>
+        {% endif %}
         <!-- TopHeader -->
         <section id="topheader">{% include "include/topHeader.html" %}</section>
         {% block fullcontent %}
