@@ -1,0 +1,191 @@
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url("..");
+    src: url("../assets/fonts/eot/IRANSansWeb.eot") format("embedded-opentype"),
+        url("../assets/fonts/woff2/IRANSansWeb.woff2") format("woff2"),
+        url("../assets/fonts/woff/IRANSansWeb.woff") format("woff"),
+        url("../assets/fonts/ttf/IRANSansWeb.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: IRANSans;
+}
+
+body {
+    direction: rtl;
+}
+
+.regLog {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.regLogBox {
+    width: 70%;
+    height: 500px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.regLogBox__right {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 35%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.regLogBox__right > span {
+    width: 100px;
+    font-weight: bold;
+    text-align: center;
+    color: #fafafa;
+    background-color: #4dabf7;
+    border: 4px solid #4dabf7;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.regLogBox__left {
+    width: 65%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+.regLogBox__left h4 {
+    color: #212121;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.regLogBox__left .alert {
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.regLogBox__left .registerLoginBoxForm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 300px;
+    position: absolute;
+    top: 100px;
+}
+
+.regLogBox__left .registerLoginBoxForm .formInput {
+    outline: none;
+    width: 100%;
+    line-height: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid #bdbdbd;
+    padding: 10px;
+    direction: rtl;
+    font-size: 15px;
+}
+
+.regLogBox__left .registerLoginBoxForm input[type="checkbox"] {
+    margin: 15px 5px 10px 0;
+    margin-right: 5px;
+    direction: rtl;
+}
+
+.regLogBox__left .registerLoginBoxForm label {
+    font-weight: 100;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.regLogBox__left .registerLoginBoxForm button {
+    background-color: #20c997;
+    color: white;
+    outline: none;
+    border: none;
+    line-height: 45px;
+    font-weight: 400;
+    font-size: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+@-webkit-keyframes anim {
+    0% {
+        width: 100px;
+    }
+    100% {
+        width: 500px;
+    }
+}
+
+@keyframes anim {
+    0% {
+        width: 100px;
+    }
+    100% {
+        width: 500px;
+    }
+}
+/*# sourceMappingURL=ModernLog.css.map */

@@ -64,7 +64,7 @@ def login_user(request):
                 messages.error(request, 'نام کاربری / رمز اشتباه است')
    
     form = LoginForm()
-    return render(request , "accounts/login.html",{"form":form})
+    return render(request , "accounts/logReg.html",{"form":form})
         
     
 def user_register(request):

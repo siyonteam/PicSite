@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="{% static 'css/font.css' %}">
+        <link rel="stylesheet" href="{% static 'accounts/css/ModernLog.css' %}" />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <main class="regLog" style="background-image: url({% static 'accounts/assets/images/bg.jpg' %});">
+            <div class="regLogBox">
+                <div class="regLogBox__right" style=" background-image: url({% static 'accounts/assets/images/sideimg.jpg' %});">
+                    <span id="toggleButton"> Register </span>
+                </div>
+                <div class="regLogBox__left">
+                    <h4 id="formStatus">ورود به حساب کاربری</h4>
+                    <div class="alert" style="display: none"></div>
+                    <form action="" id="loginForm" class="registerLoginBoxForm">
+                        <input
+                            class="formInput"
+                            type="text"
+                            placeholder="نام کاربری"
+                            required
+                        />
+                        <input
+                            class="formInput"
+                            type="password"
+                            placeholder="رمز عبور"
+                            required
+                        />
+
+                        <span
+                            ><input
+                                class="checkbox"
+                                type="checkbox"
+                                id="saveStatus"
+                                name="saveStatus" />
+                            <label for="saveStatus"> مرا به خاطر بسپار</label
+                            ><br
+                        /></span>
+                        <button id="logButton">ورود به حساب</button>
+                    </form>
+                    <form
+                        action=""
+                        id="registerForm"
+                        class="registerLoginBoxForm"
+                        style="display: none"
+                    >
+                        <input
+                            class="formInput"
+                            type="text"
+                            placeholder="نام کاربری"
+                            required
+                        />
+                        <input
+                            class="formInput"
+                            type="password"
+                            placeholder="رمز عبور"
+                            required
+                        />
+                        <input
+                            class="formInput"
+                            type="password"
+                            placeholder="تکرار رمز عبور"
+                            required
+                        />
+                        <input
+                            class="formInput"
+                            type="email"
+                            placeholder="ایمیل"
+                            required
+                        />
+                        <span
+                            ><input
+                                class="checkbox"
+                                type="checkbox"
+                                id="saveStatus"
+                                name="saveStatus" />
+                            <label for="saveStatus">
+                                پایبند به <a href="#">قوانین</a> هستم</label
+                            ><br
+                        /></span>
+                        <button id="regButton">ایجاد حساب کاربری</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <script src="{% static 'accounts/js/ModernLog.js' %}"></script>
+    </body>
+</html>
