@@ -10,7 +10,7 @@
 body {
     direction: rtl;
 }
-.login {
+.regLog {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,6 @@ body {
         background-color: whitesmoke;
         border-radius: 3px;
         display: flex;
-
         align-items: center;
         &__right {
             background-image: url("../assets/images/fence-1869401_1920.jpg");
@@ -48,9 +47,8 @@ body {
                 font-weight: bold;
                 text-align: center;
                 color: #fafafa;
-                background-color: #40c057;
-                border: 4px solid #40c057;
-
+                background-color: #4dabf7;
+                border: 4px solid #4dabf7;
                 border-radius: 20px;
                 cursor: pointer;
             }
@@ -62,18 +60,26 @@ body {
             flex-direction: column;
             align-items: center;
             padding: 10px;
-
+            position: relative;
             h4 {
                 color: $blackWeb;
                 margin-top: 30px;
+                font-size: 20px;
             }
-            .loginBoxForm {
+            .alert {
+                padding: 8px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+            .registerLoginBoxForm {
                 display: flex;
                 flex-direction: column;
-                margin-top: 50px;
+                margin-top: 40px;
                 width: 300px;
-                input[type="text"],
-                input[type="password"] {
+                position: absolute;
+                top: 100px;
+                .formInput {
                     outline: none;
                     width: 100%;
                     line-height: 20px;
@@ -82,6 +88,7 @@ body {
                     border: 1px solid #bdbdbd;
                     padding: 10px;
                     direction: rtl;
+                    font-size: 15px;
                 }
                 input[type="checkbox"] {
                     margin: 15px 5px 10px 0;
@@ -107,5 +114,13 @@ body {
                 }
             }
         }
+    }
+}
+@keyframes anim {
+    0% {
+        width: 100px;
+    }
+    100% {
+        width: 500px;
     }
 }
