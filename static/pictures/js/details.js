@@ -8,8 +8,11 @@ container.addEventListener("click", (e) => {
 
     const modal = modalToggle.nextElementSibling;
     var picid = modal.getAttribute("data-picid");
-    $.get("/pictures/" + picid, (data) => {
+    var url = "/pictures/" + picid;
+    $.get(url,function(data) {
         modal.innerHTML = data;
+        window.history.pushState('', 'detail', url);
+        
         const closeButton = modal.querySelector(".gallery_detail--closeButton");
         
         const openModal = (_) => {

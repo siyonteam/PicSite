@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">    
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,7 @@
         {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> {% endcomment %}
         <link rel="stylesheet" href="{% static 'css/font.css' %}">
         <link rel="stylesheet" href="{% static 'accounts/css/ModernLog.css' %}" />
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
 
         <title>Document</title>
     </head>
@@ -21,82 +22,28 @@
         <main class="regLog" style="background-image: url({% static 'accounts/assets/images/bg.jpg' %});">
             <div class="regLogBox">
                 <div class="regLogBox__right" style=" background-image: url({% static 'accounts/assets/images/sideimg.jpg' %});">
-                    <span id="toggleButton"> Register </span>
+                    <span id="toggleButton" data-action="{{title}}">
+                    {% if title == "login" %}
+                    Register 
+                    {% else %}
+                    Login 
+                    {% endif %}
+                     
+                     </span>
                 </div>
                 <div class="regLogBox__left">
-                    <h4 id="formStatus">ورود به حساب کاربری</h4>
+                    <h4 id="formStatus">{{title}}</h4>
                     <div class="alert" style="display: none"></div>
-                    <form action="" id="loginForm" class="registerLoginBoxForm">
-                        <input
-                            class="formInput"
-                            type="text"
-                            placeholder="نام کاربری"
-                            required
-                        />
-                        <input
-                            class="formInput"
-                            type="password"
-                            placeholder="رمز عبور"
-                            required
-                        />
-
-                        <span
-                            ><input
-                                class="checkbox"
-                                type="checkbox"
-                                id="saveStatus"
-                                name="saveStatus" />
-                            <label for="saveStatus"> مرا به خاطر بسپار</label
-                            ><br
-                        /></span>
-                        <button id="logButton">ورود به حساب</button>
-                    </form>
-                    <form
-                        action=""
-                        id="registerForm"
-                        class="registerLoginBoxForm"
-                        style="display: none"
-                    >
-                        <input
-                            class="formInput"
-                            type="text"
-                            placeholder="نام کاربری"
-                            required
-                        />
-                        <input
-                            class="formInput"
-                            type="password"
-                            placeholder="رمز عبور"
-                            required
-                        />
-                        <input
-                            class="formInput"
-                            type="password"
-                            placeholder="تکرار رمز عبور"
-                            required
-                        />
-                        <input
-                            class="formInput"
-                            type="email"
-                            placeholder="ایمیل"
-                            required
-                        />
-                        <span
-                            ><input
-                                class="checkbox"
-                                type="checkbox"
-                                id="saveStatus"
-                                name="saveStatus" />
-                            <label for="saveStatus">
-                                پایبند به <a href="#">قوانین</a> هستم</label
-                            ><br
-                        /></span>
-                        <button id="regButton">ایجاد حساب کاربری</button>
-                    </form>
+                    <div id="logregform">
+                        {% include 'accounts/include/form.html' %}
+                    </div>
                 </div>
             </div>
         </main>
-
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'accounts/js/ajaxLogin.js' %}"></script>
         <script src="{% static 'accounts/js/ModernLog.js' %}"></script>
+        
+        
     </body>
 </html>

@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.forms.widgets import RadioSelect
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404 , render , redirect
 from django.views.generic.detail import DetailView
@@ -7,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login , update_session_auth_hash , logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy , reverse
 from django.views.decorators.http import require_POST
 from common.decorators import ajax_required , ajax_login_required
 from friends.models import Friend
@@ -54,31 +55,62 @@ def profile(request , username):
 def login_user(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and request.is_ajax():
             cd = form.cleaned_data
             user = authenticate(request , username = cd["username"] , password = cd["password"])
             if user is not None :
                 login(request , user)
-                return redirect("accounts:profile" , user.username)
+                response = {
+                    "status":"1",
+                    "message":"با موفقیت وارد شدید",
+                    "url":request.build_absolute_uri(reverse('accounts:profile' , kwargs={'username':user.username}))
+                }
+                #return redirect("accounts:profile" , user.username)
             else:
-                messages.error(request, 'نام کاربری / رمز اشتباه است')
-   
+                response = {
+                    "status":"0",
+                    "message":"رمز عبور یا نام کابری اشتباه است",
+                }
+            return JsonResponse(response)
+    
+    
     form = LoginForm()
-    return render(request , "accounts/logReg.html",{"form":form})
+
+    if request.is_ajax():
+        return render(request , 'accounts/include/form.html',{"form":form})
+
+    
+    return render(request , "accounts/logReg.html",{"form":form , 'title':'login'})
         
     
 def user_register(request):
-    if request.method == "POST":
+    if request.method == "POST" and request.is_ajax():
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             user = form.save()
             login(request , user , backend='django.contrib.auth.backends.ModelBackend')
-            return redirect("accounts:profile" , user.username)
+            response = {
+                "status":"1",
+                "message":"با موفقیت وارد شدید",
+                "url":request.build_absolute_uri(reverse('accounts:profile' , kwargs={'username':user.username}))
+            }
+
+        else :
+            response = {
+                "status":"0",
+                "message":form.errors.as_text(),
+            }
+        return JsonResponse(response)
+        
+            
     else :
         form = UserRegistrationForm()
 
-    return render(request , 'accounts/register.html' , {"form":form})
+    if request.is_ajax():
+        return render(request , 'accounts/include/form.html',{"form":form})
+
+    return render(request , 'accounts/logReg.html' , {"form":form,'title':'register'})
 
 @login_required
 def user_logout(request):
@@ -171,3 +203,6 @@ def follow_user(request):
         "followers" : followers
     }
     return JsonResponse(context)
+
+def test(request):
+    return render(request,'accounts/logReg.html',{})

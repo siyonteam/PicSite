@@ -1,10 +1,14 @@
 from django.urls import path
 from django.urls.resolvers import URLPattern
-from .views import  login_user , user_register , profile,user_change_password , edit_profile , user_logout , UserPassReset , PasswordResetDone , PasswordResetConfirm , PasswordResetComplete , follow_user
+from .views import  (
+    login_user, test , user_register , profile,user_change_password , edit_profile , user_logout , UserPassReset , PasswordResetDone , PasswordResetConfirm , PasswordResetComplete , follow_user,
+    test
+)
 
 
 app_name = "accounts"
 urlpatterns = [
+    path('test/',test,),
     path('follow/' ,follow_user , name="follow" ),
     path('login/' , login_user , name="login"),
     path('register/' , user_register , name="register"),
@@ -16,5 +20,5 @@ urlpatterns = [
     path('password/reset/complete/' , PasswordResetComplete.as_view() , name="password_reset_complete"),
     path('<username>/',profile,name ="profile"),
     path('<username>/edit/',edit_profile,name ="edit_profile"),
-
+    
 ]
