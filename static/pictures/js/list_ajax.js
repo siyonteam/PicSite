@@ -11,14 +11,21 @@ $(document).ready(function () {
         ) {
             block_request = true;
             page += 1;
-            $.get("?page=" + page, function (data) {
-                if (data == "") {
-                    empty_page = true;
-                } else {
-                    block_request = false;
-                    $("#image-list").append(data);
+            $.ajax({
+                url : "",
+                method : "get",
+                data : {
+                    "page": page ,
+                },
+                success : function(data){
+                    if (data == "") {
+                        empty_page = true;
+                    } else {
+                        block_request = false;
+                        $("#image-list").append(data);
+                    }
                 }
-            });
+            })
         }
     });
 });

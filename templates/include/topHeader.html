@@ -13,11 +13,11 @@
         </ul>
     </div>
     <div class="topHeader__left">
-        <div class="topHeader__left--searchBox">
-            <i class="fas fa-search"></i>
-            <input type="text" name="" id="" placeholder="Search" />
-        </div>
+        <form method="GET" action="" class="topHeader__left--searchBox">
+            <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+            <input type="text" name="q" id="" placeholder="Search" />
+        </form>
         <!-- logo -->
-        <a href="#"><img src="{% static "assets/images/logo.png" %}" alt="" /></a>
+        <a href="{% url 'pictures:home' %}"><img src="{% static "assets/images/logo.png" %}" alt="" /></a>
     </div>
 </div>

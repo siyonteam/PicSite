@@ -1,4 +1,5 @@
 let container = document.querySelector(".main__pics--container");
+let oldUrl = window.location.href;
 
 container.addEventListener("click", (e) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ container.addEventListener("click", (e) => {
         const closeModal = (_) => {
             modal.classList.remove("detail_show");
             modal.removeEventListener("animationend", closeModal);
+            window.history.pushState('', 'home', oldUrl);
             modal.innerHTML = "";
         };
         closeButton.addEventListener("click", () => {

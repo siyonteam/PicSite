@@ -74,12 +74,7 @@ def login_user(request):
             return JsonResponse(response)
     
     
-    form = LoginForm()
-
-    if request.is_ajax():
-        return render(request , 'accounts/include/form.html',{"form":form})
-
-    
+    form = LoginForm()  
     return render(request , "accounts/logReg.html",{"form":form , 'title':'login'})
         
     
@@ -106,9 +101,6 @@ def user_register(request):
             
     else :
         form = UserRegistrationForm()
-
-    if request.is_ajax():
-        return render(request , 'accounts/include/form.html',{"form":form})
 
     return render(request , 'accounts/logReg.html' , {"form":form,'title':'register'})
 

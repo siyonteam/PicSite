@@ -41,27 +41,4 @@ $(document).ready(function () {
             }
         })
     })
-
-    $("body").on("click","#toggleButton",function(e){
-        let action = $('#toggleButton').data("action");
-        console.log(action)
-        let url;
-        let post_action ;
-        if (action == "login"){
-            url = '/accounts/register/'
-            post_action = "register";
-        }else{
-            url = '/accounts/login/'
-            post_action = "login"
-        }
-        $.ajax({
-            url : url,
-            method : 'get',
-            success : function(response){
-                document.getElementById("logregform").innerHTML=response;
-                $('#toggleButton').attr("data-action",post_action);
-                $('#toggleButton').text(action)
-            }
-        })
-    })
 });

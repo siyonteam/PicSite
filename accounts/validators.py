@@ -91,6 +91,8 @@ class LowerCase():
                 _("پسورد باید شامل حروف کوچک هم باشد"),
                 code="lower_case",
             )
+    def get_help_text(self):
+        return _('پسوردتان باید شامل حروف کوچک باشد')
 
 
 class UpperCase():
@@ -100,3 +102,5 @@ class UpperCase():
                 _("پسورد باید شامل حروف بزرگ هم باشد"),
                 code="lower_case",
             )
+    def get_help_text(self):
+        return _('پسوردتان باید شامل حروف بزرگ باشد')

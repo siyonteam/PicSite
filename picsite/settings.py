@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'accounts.apps.AccountsConfig',
     'friends.apps.FriendsConfig',
     'pictures.apps.PicturesConfig',
@@ -69,10 +70,12 @@ WSGI_APPLICATION = 'picsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'picsite',
+        'USER': 'picsite',
+        'PASSWORD': 'picsite',
     }
-}
+ }
 
 
 # Password validation

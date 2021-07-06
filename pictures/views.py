@@ -8,6 +8,7 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.utils.text import slugify
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from friends.models import Like
 from common.decorators import ajax_required , ajax_login_required
 from .models import Picture , Category
@@ -16,11 +17,19 @@ from .forms import AddPictureForm
 # home page view 
 def home(request , category_slug=None):
     all_pics = Picture.objects.all()
+    query = request.GET.get("q")
     
     # category view
     if category_slug:
         category = get_object_or_404(Category , slug=category_slug)
         all_pics = all_pics.filter(category = category)
+
+    # search
+    if query :
+        search_vector = SearchVector('title','description')
+        search_query = SearchQuery(query)
+        all_pics = all_pics.annotate(search=search_vector,rank=SearchRank(search_vector,search_query)).filter(search=search_query).order_by('-rank')
+
 
     paginator = Paginator(all_pics , 19)
     page = request.GET.get("page")
