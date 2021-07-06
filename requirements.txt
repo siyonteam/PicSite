@@ -1,0 +1,4 @@
+Django==3.2
+pillow
+django-taggit
+psycopg2-binary
