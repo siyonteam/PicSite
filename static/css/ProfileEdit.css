@@ -1,0 +1,100 @@
+.profile__main {
+  padding-bottom: 30px;
+}
+
+.profile__main .profile__main--right {
+  position: relative;
+  top: -150px;
+}
+
+.profile__main .profile__main--right .userInfo {
+  width: 100%;
+  -webkit-box-flex: 0.5;
+      -ms-flex: 0.5;
+          flex: 0.5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__main .profile__main--right .userInfo > input {
+  width: 100%;
+  line-height: 25px;
+  padding: 3px 10px;
+}
+
+.profile__main .profile__main--left .postImage {
+  width: 80%;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 20px;
+}
+
+.profile__main .profile__main--left .imgAdd {
+  margin-bottom: 20px;
+}
+
+.profile__main .profile__main--left .postAdd {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile__main .profile__main--left .postAdd > input,
+.profile__main .profile__main--left .postAdd select {
+  width: 80%;
+  padding: 3px 10px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 960px) {
+  .profile__main .profile__main--right {
+    position: inherit;
+  }
+  .profile__main .profile__main--right .userInfo {
+    width: 100%;
+    -webkit-box-flex: 0.5;
+        -ms-flex: 0.5;
+            flex: 0.5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .profile__main .profile__main--right .userInfo > input,
+  .profile__main .profile__main--right .userInfo textarea {
+    width: 80%;
+    line-height: 25px;
+    padding: 3px 10px;
+  }
+}
+/*# sourceMappingURL=ProfileEdit.css.map */

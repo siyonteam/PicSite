@@ -1,0 +1,71 @@
+.profile__main {
+    padding-bottom: 30px;
+
+    .profile__main--right {
+        position: relative;
+        top: -150px;
+        .userInfo {
+            width: 100%;
+            flex: 0.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            > input {
+                width: 100%;
+                line-height: 25px;
+                padding: 3px 10px;
+            }
+        }
+    }
+    .profile__main--left {
+        .postImage {
+            width: 80%;
+            height: 400px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-bottom: 20px;
+        }
+        .imgAdd {
+            margin-bottom: 20px;
+        }
+        .postAdd {
+            width: 50%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            > input,
+            select {
+                width: 80%;
+                padding: 3px 10px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 960px) {
+    .profile__main {
+        .profile__main--right {
+            position: inherit;
+            .userInfo {
+                width: 100%;
+                flex: 0.5;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+
+                > input,
+                textarea {
+                    width: 80%;
+                    line-height: 25px;
+                    padding: 3px 10px;
+                }
+            }
+        }
+    }
+}
