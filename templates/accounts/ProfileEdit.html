@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'accounts/css/Profile.css' %} "> 
+    <link rel="stylesheet" href="{% static 'accounts/css/ProfileEdit.css' %} "> 
+    
+{% endblock head %}
+
+<section id="profile">
+            <div class="profile">
+                <div class="profile__header">
+                    <a
+                        href=""
+                        class="profile__header--image"
+                        style="
+                            background-image: url(static/assets/images/galaxy-11098.jpg);
+                        "
+                    ></a>
+                    <a href="#" class="profile__header--headerUpload"
+                        ><i class="fas fa-image"></i
+                    ></a>
+                </div>
+                <div class="profile__main">
+                    <div class="profile__main--right">
+                        <p>اطلاعات کاربری</p>
+                        <form action="" class="userInfo">
+                            <input type="text" placeholder="نام" />
+                            <input type="text" placeholder="نام خانوادگی" />
+                            <input type="text" placeholder="ایمیل" />
+                            <input type="text" placeholder="شماره موبایل" />
+                            <textarea
+                                name=""
+                                id=""
+                                cols="45"
+                                rows="5"
+                                placeholder="توضیحات کاربری"
+                                style="padding: 3px 8px"
+                            ></textarea>
+                            <button class="btn btn-primary">ویرایش</button>
+                        </form>
+                    </div>
+
+                    <div class="profile__main--left">
+                        <p>پست تصویر</p>
+                        <div
+                            class="postImage"
+                            style="
+                                background-image: url(static/assets/images/uploadCloud.png);
+                            "
+                        ></div>
+                        <form action="" class="imgAdd">
+                            <input type="file" name="" id="" />
+                            <button class="btn btn-primary">اپلود</button>
+                        </form>
+                        <form action="" class="postAdd">
+                            <input type="text" placeholder="نام عکس" />
+                            <input type="text" placeholder="مکان تصویر" />
+                            <input type="text" placeholder="برچسب ها" />
+                            <select name="category" id="category">
+                                <option value="natural">طبیعت</option>
+                                <option value="romantic">رمانتیک</option>
+                                <option value="wildlife">حیات وحش</option>
+                                <option value="historical">اماکن تاریخی</option>
+                            </select>
+                            <textarea
+                                name=""
+                                id=""
+                                cols="41"
+                                rows="6"
+                                placeholder="توضیحات عکس"
+                                style="padding: 3px 10px; margin-bottom: 20px"
+                            ></textarea>
+
+                            <button class="btn btn-primary">پست کردن</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
