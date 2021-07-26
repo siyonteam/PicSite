@@ -1,54 +1,118 @@
 {% load static %}
 
+<div class="gallery_detail--closeButton">
+    <i class="fas fa-times-circle"></i>
+</div>
 
-    <div class="gallery_detail--closeButton">
-        <i class="fas fa-times-circle"></i>
-    </div>
-
-    <div class="gallery_detail--container">
-        <div class="gallery_detail--container-header">
-            <div class="likeButton">
+<div class="gallery_detail--container">
+    <div class="gallery_detail--container-header">
+        <div class="likeButton">
             {% if is_liked %}
-                <a id="like" ><i class="fas fa-heart clicked"  data-id = "{{ pic.id }}"  data-action = "unlike" onclick = "like(this)"></i></a>
+            <a id="like"
+                ><i
+                    class="fas fa-heart clicked"
+                    data-id="{{ pic.id }}"
+                    data-action="unlike"
+                    onclick="like(this)"
+                ></i
+            ></a>
             {% else %}
-                <a id="like" ><i class="fas fa-heart"  data-id = "{{ pic.id }}"  data-action = "like" onclick = "like(this)"></i></a>
+            <a id="like"
+                ><i
+                    class="fas fa-heart"
+                    data-id="{{ pic.id }}"
+                    data-action="like"
+                    onclick="like(this)"
+                ></i
+            ></a>
             {% endif %}
-                
-            </div>
-            <a href="#" class="fullDetail"  >
-                <p id="p">ادامه پست</p>
-            </a>
         </div>
-        <div class="gallery_detail--container-img">
-            <img
-                src={{ pic.pic.url }}
-                alt=""
-            />
-        </div>
-        <div class="gallery_detail--container-caption">
-            <p>
-                نویسنده :
-                <span class="authorName"
-                    >{{ user.username }}</span
-                >
-            </p>
+        <a href="#" class="fullDetail">
+            <p id="p">ادامه پست</p>
+        </a>
+    </div>
+    <div class="gallery_detail--container-img">
+        <img src="{{" pic.pic.url }} alt="" />
+    </div>
+    <div class="gallery_detail--container-caption">
+        <p>
+            نویسنده :
+            <span class="authorName">{{ user.username }}</span>
+        </p>
 
-            <p>
-                تعداد پسندیدن ها :
-                <span class="likeCount">{{ pic.likes.all.count }}</span>
-            </p>
-            <p>
-                تاریخ پست :
-                <span class="postDate">{{ pic.updated }}</span>
-            </p>
+        <p>
+            تعداد پسندیدن ها :
+            <span class="likeCount">{{ pic.likes.all.count }}</span>
+        </p>
+        <p>
+            تاریخ پست :
+            <span class="postDate">{{ pic.updated }}</span>
+        </p>
 
-            <p>
-                توضیحات :
-                <span class="imageDescription"
-                    >{{pic.descripton}}</span
-                >
-            </p>
+        <p>
+            توضیحات :
+            <span class="imageDescription">{{pic.descripton}}</span>
+        </p>
+    </div>
+    <div class="cat-Wrapper">
+        <p>دسته بندی مشابه</p>
+        <div class="gallery_detail--container-sameCategory">
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
+            <a
+                href=""
+                class="sameCategory__images"
+                style="
+                    background-image: url(static/assets/images/galaxy-11098.jpg);
+                "
+            ></a>
         </div>
     </div>
-
-
+</div>
